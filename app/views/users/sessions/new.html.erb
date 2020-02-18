@@ -1,19 +1,24 @@
-<h2>ログイン</h2>
+<div class="container text-center">
+  <div class="row">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+    <h2>ログイン</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "ログイン" %>
+      </div>
+    <% end %>
+
+    <p>C&C利用規約</p>
+
+    <%= render "users/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<p>C&C利用規約</p>
-
-<%= render "users/shared/links" %>
+</div>
