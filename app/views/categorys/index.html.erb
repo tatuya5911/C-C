@@ -1,0 +1,16 @@
+
+
+<h2>カテゴリー作成</h2>
+
+  <%= form_with(model: @category, url: categorys_path, local: true) do |f| %>
+    <%= f.text_field :category_name, placeholder:"カテゴリー名" %>
+    <%= f.submit "追加" %>
+  <% end %>
+
+<h2>カテゴリー一覧</h2>
+
+  <% @categorys.each do |category| %>
+    <%= category.category_name %>
+    <%= link_to "編集する", edit_category_path(category.id) %>
+    <%= link_to "削除する", category_path(category.id), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  <% end %>
