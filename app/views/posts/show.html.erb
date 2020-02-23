@@ -15,7 +15,7 @@
   <ul id="list">
   <% @post_reviews.each do |post_review| %>
     <div id="comments_buttons_<%= post_review.id %>">
-      <%= render 'posts/post_review', post_review:post_review %>
+      <%= render 'posts/post_review', post_review:post_review, post:@post %>
     </div>
   <% end %>
   </ul>
