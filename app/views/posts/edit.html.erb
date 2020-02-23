@@ -1,0 +1,18 @@
+
+  <h2>現在の内容</h2>
+
+    <%= render 'posts/list' %>
+
+  <h2>変更する内容</h2>
+
+    <%= form_with(model: @post, url: post_path, local: true) do |f| %>
+      <%= f.attachment_field :post_image, placeholder: "画像選択" %><br>
+      <%= f.text_field :post_title, placeholder: "商品名" %><br>
+      <%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %><br>
+      <%= f.select :aroma, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"香り" %><br>
+      <%= f.select :acidity, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"酸味" %><br>
+      <%= f.select :rich, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"コク" %><br>
+      <%= f.select :bitterness, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"苦味" %><br>
+      <%= f.text_area :body, placeholder: "商品内容やおすすめポイントなどを記入してください" %><br>
+      <%= f.submit "編集する" %>
+    <% end %>
