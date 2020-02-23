@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_163238) do
+ActiveRecord::Schema.define(version: 2020_02_23_033827) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.string "title"
+    t.text "comment"
+    t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_163238) do
     t.integer "aroma"
     t.integer "acidity"
     t.integer "rich"
-    t.string "bitterness"
+    t.integer "bitterness"
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

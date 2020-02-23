@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @category = @post.category
     @user = @post.user
+    @post_review = PostReview.new
+    @post_reviews = @post.post_reviews
   end
 
   def new
