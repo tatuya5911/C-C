@@ -20,9 +20,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    binding.pry
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(post.id), notice:"投稿しました"
+      redirect_to post_path(@post.id), notice:"投稿しました"
     else
       render :new
     end

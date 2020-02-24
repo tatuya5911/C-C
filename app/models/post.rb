@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   validates :acidity, presence: true
   validates :rich, presence: true
   validates :bitterness, presence: true
-  validates :rate, :numericality => { :less_than_or_equal_to => 100 }
-  validates :body, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: {maximum: 200}
+  validates :rate, :numericality => { :less_than_or_equal_to => 100 }, format: { with: /\A[a-z0-9]+\z/i }
+  validates :body, presence: true, length: {maximum: 200}
 
 end
