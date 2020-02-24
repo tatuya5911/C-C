@@ -14,6 +14,10 @@ class PostsController < ApplicationController
     @post_reviews = @post.post_reviews
   end
 
+  def search
+    @posts = Post.search(params[:search])
+  end
+
   def new
     @post = Post.new
   end
@@ -56,5 +60,14 @@ class PostsController < ApplicationController
   def set_categorys
     @categorys = Category.all
   end
+
+  def self.search(search)
+    if search
+      Post.where(['content LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
 
 end
