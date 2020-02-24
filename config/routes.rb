@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
   resources :posts, only: [:index, :show, :search, :new, :create, :edit, :update, :destroy] do
     resources :post_reviews, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
 
 end

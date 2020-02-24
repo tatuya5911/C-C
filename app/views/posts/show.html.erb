@@ -1,6 +1,9 @@
 
 
-  <%= render 'posts/list' %>
+  <%= render 'list', post: @post, user: @user, category: @category %>
+  <div id="likes_buttons_<%= @post.id %>">
+    <%= render 'like', post: @post %>
+  </div>
 
   <%= link_to "編集する", edit_post_path %>
   <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>

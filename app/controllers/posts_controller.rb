@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @post_review = PostReview.new
     @post_reviews = @post.post_reviews
+    @like = Like.new
   end
 
   def search
