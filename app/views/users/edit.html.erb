@@ -1,0 +1,9 @@
+
+
+  <h2>登録情報編集ページ</h2>
+
+    <%= form_with(model: @user, url: user_path) do |f| %>
+      <%= f.text_field :user_name %>
+      <%= f.email_field :email %>
+      <%= f.submit "変更する" %>
+    <% end %>
