@@ -10,7 +10,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :acidity
       t.integer :rich
       t.string :bitterness
-      t.float :rate
+      t.integer :rate
 
       t.timestamps
     end

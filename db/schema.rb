@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_033827) do
+ActiveRecord::Schema.define(version: 2020_02_24_034455) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_033827) do
     t.integer "acidity"
     t.integer "rich"
     t.integer "bitterness"
-    t.float "rate"
+    t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

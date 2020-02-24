@@ -5,7 +5,7 @@ class CreatePostReviews < ActiveRecord::Migration[5.2]
       t.integer :post_id
       t.string :title
       t.text :comment
-      t.float :rate
+      t.integer :rate
 
       t.timestamps
     end

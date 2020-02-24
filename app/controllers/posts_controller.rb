@@ -19,9 +19,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
-    if post.save
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
       redirect_to post_path(post.id), notice:"投稿しました"
     else
       render :new
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
+    post.destroy!
     redirect_to posts_path
   end
 
