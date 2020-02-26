@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
   resources :posts, only: [:index, :show, :search, :new, :create, :edit, :update, :destroy] do
-    resources :post_reviews, only: [:create, :destroy]
-    resources :likes, only: [:create, :destroy]
+    resource :post_reviews, only: [:new, :create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
 
 end

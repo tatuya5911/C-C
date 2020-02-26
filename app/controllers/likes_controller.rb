@@ -4,7 +4,6 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = current_user.likes.create(post_id: params[:post_id])
     @like.save!
-    binding.pry
   end
 
   def destroy

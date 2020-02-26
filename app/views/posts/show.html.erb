@@ -7,18 +7,12 @@
 
   <%= link_to "編集する", edit_post_path %>
   <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <%= link_to "コメントする", new_post_post_reviews_path(@post.id) %>
 
-  <%= form_with(model: [@post, @post_review]) do |f| %>
-    <div id="comment_button_<%= @post.id %>">
-      <%= f.text_field :title, placeholder: "タイトル" %><br>
-      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメント" %><br>
-      <%= f.submit "送信する", data: {disable_with: "submitting..."} %>
-    </div>
-  <% end %>
   <ul id="list">
   <% @post_reviews.each do |post_review| %>
     <div id="comments_buttons_<%= post_review.id %>">
-      <%= render 'posts/post_review', post_review:post_review, post:@post %>
+      <%= render 'post_review', post_review:post_review, post:@post %>
     </div>
   <% end %>
   </ul>

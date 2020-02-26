@@ -1,0 +1,25 @@
+
+
+
+  ja:
+    activerecord:
+      models:
+        post: 投稿
+      attributes:
+        post:
+          post_title: 商品名
+          category_id: カテゴリー
+          body: 理由
+          aroma: 香り
+          acidity: 酸味
+          rich: コク
+          bitterness: 苦味
+          rate: 評価
+      errors:
+        models:
+          post:
+            attributes:
+              post_title:
+                blank: あああ
+              category_id:
+                blank: あああ
