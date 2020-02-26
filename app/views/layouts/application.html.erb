@@ -9,11 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    
-  </header>
-
   <body>
+    <header>
+      <% if @user.admin == true %>
+        <%= render 'layouts/admin_header' %>
+      <% else %>
+        <%= render 'layouts/user_header' %>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
