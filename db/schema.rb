@@ -10,12 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_081055) do
+ActiveRecord::Schema.define(version: 2020_02_24_083840) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "post_reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.string "title"
+    t.text "comment"
+    t.float "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.string "post_image_id"
+    t.string "post_title"
+    t.text "body"
+    t.integer "aroma"
+    t.integer "acidity"
+    t.integer "rich"
+    t.integer "bitterness"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
