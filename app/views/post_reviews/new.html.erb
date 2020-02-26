@@ -1,0 +1,9 @@
+
+
+<%= form_with(model: [@post, @post_review]) do |f| %>
+  <div id="comment_button_<%= @post.id %>">
+    <%= f.text_field :title, placeholder: "タイトル" %><br>
+    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメント" %><br>
+    <%= f.submit "送信する", data: {disable_with: "submitting..."} %>
+  </div>
+<% end %>

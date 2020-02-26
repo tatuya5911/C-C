@@ -1,0 +1,13 @@
+
+
+  <%= attachment_image_tag post, :post_image %>
+
+  <p>投稿者:<%= user.user_name %></p>
+  <p>商品名:<%= post.post_title %></p>
+  <p>カテゴリー:<%= category.category_name %></p>
+  <p>香り:<%= post.aroma %></p>
+  <p>酸味:<%= post.acidity %></p>
+  <p>コク:<%= post.rich %></p>
+  <p>苦味:<%= post.bitterness %></p>
+  <p>評価:<%= post.rate %>点</p>
+  <p>説明:<%= post.body %></p>
