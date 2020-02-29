@@ -1,0 +1,9 @@
+
+  <h2>新着一覧</h2>
+
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post.id) do %>
+        <%= post.post_title %><br>
+      <% end %>
+      <%= attachment_image_tag post, :post_image, size: "200x200"%><br>
+    <% end %>

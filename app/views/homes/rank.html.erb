@@ -4,7 +4,9 @@
     <div class="col-md-8 text-center">
       <% @all_ranks.each.with_index(1) do |post, i| %>
         第<%= i %>位
-        <%= post.post_title %><br>
+        <%= link_to post_path(post.id) do %>
+          <%= post.post_title %><br>
+        <% end %>
         <%= attachment_image_tag post, :post_image, size: "200x200"%><br>
       <% end %>
     </div>

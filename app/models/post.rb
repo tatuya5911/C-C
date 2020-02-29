@@ -2,9 +2,9 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  has_many :post_reviews
-  has_many :likes
-  has_many :liked_users, through: :likes, source: :user
+  has_many :post_reviews, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user, dependent: :destroy
 
   attachment :post_image
 

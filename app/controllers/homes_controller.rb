@@ -11,4 +11,8 @@ class HomesController < ApplicationController
     @posts = Post.all
   end
 
+  def index
+    @posts = Post.all.order(created_at: :desc).limit(30)
+  end
+
 end

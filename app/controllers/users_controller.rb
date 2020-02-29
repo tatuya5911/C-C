@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def like
+    user = User.find(params[:user_id])
+    @likes = user.likes
+  end
+
   def edit
     @user = User.find(params[:id])
   end
