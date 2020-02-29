@@ -12,6 +12,10 @@
   <% if current_user == @post.user %>
     <%= link_to "編集する", edit_post_path %>
     <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <% elsif current_user.admin ==true %>
+    <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <% else %>
+    <%= link_to "通報する", new_report_path(post_id: @post.id) %>
   <% end %>
 
 
