@@ -4,6 +4,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @categorys = Category.all
+
+    if params[:id]
+      @category = Category.find(params[:id])
+      @posts = @category.posts.order(created_at: :desc)
+    end
   end
 
   def show

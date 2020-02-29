@@ -1,12 +1,46 @@
 
-  <h2>投稿一覧</h2>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-3">
+  			<table class="table table-bordered table-hover">
+  				<thead>
+   					<tr>
+   						<th class="active">カテゴリー検索</th>
+   					</tr>
+   				</thead>
 
-  <%= render 'search' %>
-
-  <% @posts.each do |post| %>
-    <%= attachment_image_tag post, :post_image %>
-    <%= link_to post_path(post.id) do %>
-      <%= post.post_title %>
-    <% end %>
-    <%= post.category.category_name %>
-  <% end %>
+   				<tbody>
+   					<% @categorys.each do |category| %>
+   						<tr>
+   							<td>
+  								<%= link_to posts_category_path(category.id) do %>
+   									<%= category.category_name %>
+  								<% end %>
+   							</td>
+   						</tr>
+        		<% end %>
+  				</tbody>
+  			</table>
+  		</div>
+  		<div class="col-md-7">
+  			 <% if params[:id] %>
+  					<h2><%= @category.category_name %></h2>
+  			 <% else %>
+  					<h2>全て</h2>
+  			 <% end %>
+  			（全<%= @posts.count %>件）
+  		</div>
+      <%= link_to "投稿する", new_post_path %>
+  		<div class="">
+        <% @posts.each do |post| %>
+  				<div class="col-md-3">
+  				<%= attachment_image_tag post, :post_image, size: "200x200"%><br>
+  				<%= link_to post_path(post.id) do %>
+   					<%= post.post_title %><br>
+  				<% end %>
+  			 </div>
+   			<% end %>
+  		</div>
+  		<%#= paginate @post_page, class: "paginate" %>
+  	</div>
+  </div>
