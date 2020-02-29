@@ -1,10 +1,20 @@
 
 
   <% @reports.each do |report| %>
-    報告者:<%= report.user.user_name %><br>
-    レビュー作成者:<%= report.post_review.user.user_name %><br>
-    タイトル:<%= report.post_review.title %><br>
-    内容:<%= report.post_review.comment %><br>
-    通報内容:<%= report.body %><br>
-    <%= link_to "削除する", report_path(report.id), method: :delete, data: { confirm: '本当に削除しますか?' } %><br>
+    <% if report.post_id == nil %>
+      報告者:<%= report.user.user_name %><br>
+      レビュー作成者:<%= report.post_review.user.user_name %><br>
+      タイトル:<%= report.post_review.title %><br>
+      内容:<%= report.post_review.comment %><br>
+      通報内容:<%= report.body %><br>
+      <%= link_to "削除する", report_path(report.id), method: :delete, data: { confirm: '本当に削除しますか?' } %><br>
+    <% else %>
+      報告者:<%= report.user.user_name %><br>
+      投稿作成者:<%= report.post.user.user_name %><br>
+      画像:<%= attachment_image_tag report.post, :post_image %>
+      タイトル:<%= report.post.post_title %><br>
+      内容:<%= report.post.body %><br>
+      通報内容:<%= report.body %><br>
+      <%= link_to "削除する", report_path(report.id), method: :delete, data: { confirm: '本当に削除しますか?' } %><br>
+    <% end %>
   <% end %>

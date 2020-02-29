@@ -12,12 +12,17 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
-    @post_review = PostReview.find(params[:post_review_id])
+    if params[:post_id].present?
+      @post = Post.find(params[:post_id])
+    else
+      @post_review = PostReview.find(params[:post_review_id])
+    end
   end
 
   def create
     @report = Report.new(report_params)
     @report.user_id = current_user.id
+    binding.pry
     @report.save!
     redirect_to thanks_path
   end
@@ -34,7 +39,7 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:user_id, :post_review_id, :body)
+    params.require(:report).permit(:user_id, :post_review_id, :post_id, :body)
   end
 
 end
