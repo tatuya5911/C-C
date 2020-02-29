@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :post_reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
+  has_many :reports
 
   def follow(other_user)
     unless self == other_user
@@ -27,7 +28,7 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
-  
+
   def already_liked?(post)
     self.likes.exists?(post_id: post.id)
   end

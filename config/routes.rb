@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     resource :post_reviews, only: [:new, :create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
+  resources :reports, only: [:index, :new, :create, :destroy]
+  get 'thanks' => 'homes#thanks', as: "thanks"
 
 end
