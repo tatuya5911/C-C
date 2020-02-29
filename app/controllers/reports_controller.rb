@@ -22,7 +22,6 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user_id = current_user.id
-    binding.pry
     @report.save!
     redirect_to thanks_path
   end
