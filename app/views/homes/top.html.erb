@@ -1,0 +1,35 @@
+
+<div class="container">
+
+		<div id="theTarget">
+			<div class="image1"></div>
+			<div class="image2"></div>
+			<div class="image3"></div>
+			<div class="image4"></div>
+			<div class="image5"></div>
+		</div>
+
+	<div class="row">
+		<div class="col-md-2 text-center">
+			<table class="table table-bordered table-hover">
+				<thead>
+ 					<tr>
+ 						<th class="warning text-center">カテゴリー検索</th>
+ 					</tr>
+ 				</thead>
+
+        <tbody>
+ 					<% @categorys.each do |category| %>
+ 						<tr>
+ 							<td>
+								<%= link_to posts_category_path(category.id) do %>
+ 									<%= category.category_name %>
+								<% end %>
+ 							</td>
+ 						</tr>
+      		<% end %>
+				</tbody>
+			</table>
+		</div>
+  </div>
+</div>

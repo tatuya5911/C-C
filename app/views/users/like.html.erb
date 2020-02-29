@@ -1,0 +1,8 @@
+
+
+<% @likes.each do |like| %>
+  <%= link_to post_path(like.post.id) do %>
+    <%= like.post.post_title %><br>
+  <% end %>
+  <%= attachment_image_tag like.post, :post_image, size: "200x200"%><br>
+<% end %>

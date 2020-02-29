@@ -1,5 +1,8 @@
 
 <%= form_tag(posts_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
+  <%= text_field_tag :search, "", class: 'input-mysize' %>
+
+  <button type="submit" class="button1">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  </button>
 <% end %>

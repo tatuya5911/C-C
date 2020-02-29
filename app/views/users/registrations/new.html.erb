@@ -1,31 +1,41 @@
 <div class="container text-center">
   <div class="row">
-    <h2>新規登録</h2>
+    <h2 class="signin_title">新規登録</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field">
-          <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", placeholder: "ニックネーム" %>
-        </div>
-
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード" %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用）" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "利用規約に同意して新規登録を行う" %>
-        </div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="field">
+                <%= f.text_field :user_name, autocomplete: "user_name", placeholder: "ニックネーム" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="field">
+                <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="field">
+                <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="field">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用）" %>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="field">
+                <%= f.submit "利用規約に同意して新規登録を行う" %>
+              </td>
+            </tr>
       <% end %>
-
-      <%= render "users/shared/links" %>
   </div>
 </div>

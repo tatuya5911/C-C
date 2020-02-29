@@ -11,11 +11,7 @@
 
   <body>
     <header>
-      <% if @user.admin == true %>
-        <%= render 'layouts/admin_header' %>
-      <% else %>
-        <%= render 'layouts/user_header' %>
-      <% end %>
+        <%= render 'layouts/header' %>
     </header>
     <%= yield %>
   </body>

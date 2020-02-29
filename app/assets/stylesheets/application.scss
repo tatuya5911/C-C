@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 99px;
+  background-color: #000055;
+}
+
+.navbar-brand {
+  font-size: 40px;
+  padding-top: 33px;
+  padding-left: 50px;
+  color: #FFFFFF;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.search {
+  padding-top: 25px;
+  padding-left: 300px;
+}
+
+.count {
+  float: right;
+  padding-bottom: 100px;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.nav-item {
+  float: left;
+  display: inline-block;
+}
+
+.link{
+  padding-left: 20px;
+  color: #FFFFFF;
+}
+
+.link:hover {
+  color: #FFFFFF;
+}
+
+.first{
+  padding-left: 300px;
+}
+
+.button1 {
+  color: #000000;
+  height: 41px;
+  width: 40px;
+}
+
+.input-mysize {
+  width: 600px;
+  height: 40px;
+}
+
+.signin_title {
+  padding-left: 224px;
+}
+
+table, th, td{
+  border: none !important;
+}
+
+.field {
+  text-align: center;
+}
