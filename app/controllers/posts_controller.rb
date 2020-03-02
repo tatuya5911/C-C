@@ -19,6 +19,18 @@ class PostsController < ApplicationController
     @post_review = PostReview.new
     @post_reviews = @post.post_reviews
     @like = Like.new
+    new_history = @post.browsing_histories.new
+    new_history.user_id = current_user.id
+    if current_user.browsing_histories.exists?(post_id: "#{params[:id]}")
+      old_history = current_user.browsing_histories.find_by(post_id: "#{params[:id]}")
+      old_history.destroy
+    end
+    new_history.save
+    histories_stock_limit = 10
+    histories = current_user.browsing_histories.all
+    if histories.count > histories_stock_limit
+      histories[0].destroy
+    end
   end
 
   def search

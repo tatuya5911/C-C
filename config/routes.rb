@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   end
   resources :reports, only: [:index, :new, :create, :destroy]
   get 'thanks' => 'homes#thanks', as: "thanks"
+  get 'browsing_histories/:user_id' => 'browsing_histories#index', as: "browsing_histories"
 
 end
