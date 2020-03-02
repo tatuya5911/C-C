@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_114510) do
+ActiveRecord::Schema.define(version: 2020_03_02_064222) do
+
+  create_table "browsing_histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -27,27 +34,12 @@ ActiveRecord::Schema.define(version: 2020_02_29_114510) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.integer "post_id"
-    t.integer "post_review_id"
-    t.string "action", default: "", null: false
-    t.boolean "checked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_notifications_on_post_id"
-    t.index ["visited_id"], name: "index_notifications_on_visited_id"
-    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
-    t.index [nil], name: "index_notifications_on_comment_id"
-  end
-
   create_table "post_reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
     t.string "title"
     t.text "comment"
-    t.float "rate"
+    t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
