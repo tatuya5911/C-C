@@ -10,9 +10,36 @@
   </head>
 
   <body>
+
     <header>
-        <%= render 'layouts/header' %>
+      <%= link_to root_path do %>
+        <div class="center">
+          <a class="title">C&C</a>
+        </div>
+      <% end %>
     </header>
+
+    <main>
     <%= yield %>
+    </main>
+
+    <footer>
+      <ul class="footer">
+        <li>
+          <%= link_to "Home", root_path, class: "link" %> |
+        </li>
+        <li>
+          <%= link_to "プライバシーポリシー", "#", class: "link" %> |
+        </li>
+        <li>
+          <%= link_to "利用規約", "#", class: "link" %> |
+        </li>
+        <li>
+          <%= link_to "お問い合わせ", "#", class: "link" %>
+        </li>
+        <li class="item text">@ 2020.C&C.com</li>
+      </ul>
+    </footer>
+
   </body>
 </html>

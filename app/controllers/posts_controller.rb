@@ -35,6 +35,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:search])
+    binding.pry
   end
 
   def new
@@ -86,6 +87,5 @@ class PostsController < ApplicationController
       Post.all
     end
   end
-
 
 end

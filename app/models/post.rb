@@ -19,4 +19,13 @@ class Post < ApplicationRecord
   validates :rate, :numericality => { :less_than_or_equal_to => 100 }, format: { with: /\A[a-z0-9]+\z/i }
   validates :body, presence: true, length: {maximum: 200}
 
+  def self.search(search)
+    if search
+      Post.where(['content LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
+
 end
