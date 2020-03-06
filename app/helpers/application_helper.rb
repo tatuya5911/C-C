@@ -4,4 +4,8 @@ module ApplicationHelper
     Post.count
   end
 
+  def categorys
+    Category.all
+  end
+
 end

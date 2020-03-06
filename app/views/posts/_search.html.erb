@@ -1,7 +1,6 @@
 
-<%= form_tag(posts_path,:method => 'get') do %>
-  <%= text_field_tag :search, "", class: 'input-mysize' %>
-
+<%= form_tag(search_path,:method => 'get') do %>
+  <%= text_field_tag :search, "", class: 'input-mysize', placeholder: '調べたい口コミ' %>
   <button type="submit" class="button1">
     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
   </button>

@@ -1,35 +1,110 @@
 
-<div class="container">
 
-		<div id="theTarget">
-			<div class="image1"></div>
-			<div class="image2"></div>
-			<div class="image3"></div>
-			<div class="image4"></div>
-			<div class="image5"></div>
-		</div>
-
-	<div class="row">
-		<div class="col-md-2 text-center">
-			<table class="table table-bordered table-hover">
-				<thead>
- 					<tr>
- 						<th class="warning text-center">カテゴリー検索</th>
- 					</tr>
- 				</thead>
-
-        <tbody>
- 					<% @categorys.each do |category| %>
- 						<tr>
- 							<td>
-								<%= link_to posts_category_path(category.id) do %>
- 									<%= category.category_name %>
-								<% end %>
- 							</td>
- 						</tr>
-      		<% end %>
-				</tbody>
-			</table>
-		</div>
+  <div class="center">
+    <p>自分にあったコーヒーを探そう！</p>
+    <%= render 'posts/search' %>
   </div>
-</div>
+  <div class="container">
+	  <div class="row">
+      <div class="col-lg-2"></div>
+		  <div class="col-lg-8">
+        <div class="center">
+          <h2>
+            コーヒーで幸せな時をあなたに。
+          </h2>
+          <p>
+            世界には、200種類以上のコーヒーの銘柄があるとされてますが、一つ一つ酸味や苦味などに違いがあり、コーヒーと一括りにされていますが、全く味が異なるコーヒーもあります。
+            その中で自分の好みのコーヒーを一人で探すのはほとんどの場合、とても時間が掛かります。そこでこのC＆Cです。C&Cは、自分にあったコーヒーを探すためのSNS型口コミサイトです。
+            一人では見つけにくい好みのコーヒーも皆さんが共有すれば、見つかる可能性はグッと高くなります。<br>
+            みんなで自分にあったコーヒーを見つけよう！
+          </p>
+        </div>
+        <div class="center">
+          <% if user_signed_in? %>
+            <%= link_to "マイページ", user_path(current_user.id), class: "btn" %>
+          <% else %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+          <% end %>
+        </div>
+        <div class="center">
+          <%= link_to "おすすめのコーヒーを共有する", new_post_path, class: "btn" %>
+        </div>
+
+        <div class="text-center">
+          <div class="content text-center">
+            <h4>投稿一覧</h4>
+            <% @posts.shuffle.first(1).each do |post| %>
+    			      <%= link_to post_path(post.id) do %>
+    							<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
+    			      <% end %>
+    			    <% end %>
+    					<p><%= link_to "その他を表示", posts_path, class: "link" %></p>
+          </div>
+
+          <div class="content text-center">
+            <h4>最近の投稿</h4>
+            <% @posts.shuffle.first(1).each do |post| %>
+      			  <%= link_to post_path(post.id) do %>
+      					<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
+      			  <% end %>
+      			<% end %>
+      			<p><%= link_to "その他を表示", posts_path, class: "link" %></p>
+          </div>
+
+          <div class="content text-center">
+            <h4>ランキング</h4>
+            <% @all_ranks.shuffle.first(1).each do |post| %>
+    					<%= link_to post_path(post.id) do %>
+    						<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
+    					<% end %>
+    				<% end %>
+    				<p><%= link_to "その他を表示", rank_path, class: "link" %></p>
+          </div>
+
+          <div class="text-center">
+            <h4>こんな投稿がされてるよ</h4>
+            <% @posts.shuffle.first(10).each do |post| %>
+    			    <%= link_to post_path(post.id) do %>
+    						<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
+    			    <% end %>
+    			  <% end %>
+          </div>
+        </div>
+
+        <div class="links text-center">
+          <ul>
+            <li><%= link_to "投稿一覧", posts_path, class: "link" %></li> |
+            <li><%= link_to "最近の投稿", posts_path, class: "link" %></li> |
+            <li><%= link_to "ランキング", rank_path, class: "link" %></li> |
+            <% if user_signed_in? && current_user.admin == true %>
+              <li><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
+              <li><%= link_to "カテゴリー作成", categorys_path, class: "link" %></li> |
+              <li><%= link_to "通報", reports_path, class: "link" %></li> |
+            <% elsif user_signed_in? %>
+              <li><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
+            <% else %>
+              <li><%= link_to "新規登録", new_user_registration_path, class: "link" %></li> |
+              <li><%= link_to "ログイン", new_user_session_path, class: "link" %></li> |
+            <% end %>
+          </ul>
+          <ul>
+            カテゴリー: <li>
+              <% @categorys.each do |category| %>
+                <%= link_to posts_category_path(category.id), class: "link" do %>
+                  <%= category.category_name %>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+
+        </div>
+
+
+
+
+  		</div>
+    </div>
+  </div>
