@@ -1,7 +1,10 @@
+
 <li>
-  <%= post_review.user.user_name %>
-title:  <%= post_review.title %><br>
-comment:  <%= post_review.comment %><br>
+  <%= link_to user_path(@user.id), class: "link comment" do %>
+    <%= post_review.user.user_name %><br>
+  <% end %>
+  <%= post_review.title %><br>
+  <%= post_review.comment %><br>
   <% if post_review.user == current_user || current_user.admin == true %>
     <%= link_to "削除する", post_post_reviews_path(post), method: :delete, remote: true %>
   <% else %>

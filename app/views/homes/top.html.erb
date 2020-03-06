@@ -90,6 +90,15 @@
               <li><%= link_to "ログイン", new_user_session_path, class: "link" %></li> |
             <% end %>
           </ul>
+          <ul>
+            カテゴリー: <li>
+              <% @categorys.each do |category| %>
+                <%= link_to posts_category_path(category.id), class: "link" do %>
+                  <%= category.category_name %>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
 
         </div>
 

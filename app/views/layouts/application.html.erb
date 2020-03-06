@@ -14,7 +14,7 @@
     <header>
       <%= link_to root_path do %>
         <div class="center">
-          <a class="title">C&C</a>
+          <p class="title">C&C</p>
         </div>
       <% end %>
     </header>
@@ -28,6 +28,11 @@
         <li>
           <%= link_to "Home", root_path, class: "link" %> |
         </li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "マイページ", user_path(current_user.id), class: "link" %> |
+          </li>
+        <% end %>
         <li>
           <%= link_to "プライバシーポリシー", "#", class: "link" %> |
         </li>
