@@ -1,19 +1,22 @@
 
-<div class="container">
-  <div class="row">
-    <%= render 'homes/left_list', categorys: categorys %>
-    <div class="col-md-8">
-      <% @all_ranks.each.with_index(1) do |post, i| %>
-        <h3>第<%= i %>位
-        <%= link_to post_path(post.id) do %>
-          <%= post.post_title %><br>
-        <% end %></h3>
-        <%= attachment_image_tag post, :post_image, size: "200x200", align: "left" %><br>
-        <h4>タイトル:<%= post.post_title %></h4><br>
-        <h4>カテゴリー:<%= post.category.category_name %></h4><br>
-        <h4>評価:<%= post.rate %>点</h4><br clear="left">
-      <% end %>
+  <div class="container">
+    <div class="row">
+
+      <%= render 'homes/list' %>
+
+      <div class="col-md-5 list">
+
+        <% @all_ranks.each.with_index(1) do |post, i| %>
+          <h3>第<%= i %>位
+          <%= link_to post_path(post.id), class: "link" do %>
+            <%= post.post_title %><br>
+          <% end %></h3>
+          <%= attachment_image_tag post, :post_image, size: "200x200", align: "left" %><br>
+          <h4>タイトル:<%= post.post_title %></h4><br>
+          <h4>カテゴリー:<%= post.category.category_name %></h4><br>
+          <h4>評価:<%= post.rate %>点</h4><br clear="left">
+        <% end %>
+
+      </div>
     </div>
-    <div class="col-md-2"></div>
   </div>
-</div>

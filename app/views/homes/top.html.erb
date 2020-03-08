@@ -18,6 +18,11 @@
             一人では見つけにくい好みのコーヒーも皆さんが共有すれば、見つかる可能性はグッと高くなります。<br>
             みんなで自分にあったコーヒーを見つけよう！
           </p>
+          <% unless user_signed_in? %>
+            <p>
+              ※投稿やコメントは登録・ログインしないとできません。
+            </p>
+          <% end %>
         </div>
         <div class="center">
           <% if user_signed_in? %>
@@ -27,9 +32,11 @@
             <%= link_to "ログイン", new_user_session_path, class: "btn" %>
           <% end %>
         </div>
-        <div class="center">
-          <%= link_to "おすすめのコーヒーを共有する", new_post_path, class: "btn" %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="center">
+            <%= link_to "おすすめのコーヒーを共有する", new_post_path, class: "btn" %>
+          </div>
+        <% end %>
 
         <div class="text-center">
           <div class="content text-center">
@@ -49,7 +56,7 @@
       					<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
       			  <% end %>
       			<% end %>
-      			<p><%= link_to "その他を表示", posts_path, class: "link" %></p>
+      			<p><%= link_to "その他を表示", homes_path, class: "link" %></p>
           </div>
 
           <div class="content text-center">
@@ -64,7 +71,7 @@
 
           <div class="text-center">
             <h4>こんな投稿がされてるよ</h4>
-            <% @posts.shuffle.first(10).each do |post| %>
+            <% @posts.shuffle.first(8).each do |post| %>
     			    <%= link_to post_path(post.id), class: "link-to-post-detail" do %>
     						<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
     			    <% end %>

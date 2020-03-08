@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def like
     user = User.find(params[:user_id])
-    @likes = user.likes
+    @likes = user.likes.page(params[:page]).per(10)
   end
 
   def edit
