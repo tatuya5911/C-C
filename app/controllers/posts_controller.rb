@@ -14,6 +14,9 @@ class PostsController < ApplicationController
   end
 
   def show
+    if Post.find(params[:id]) == nil
+      redirect_to :index
+    end
     @post = Post.find(params[:id])
     @category = @post.category
     @user = @post.user

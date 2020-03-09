@@ -5,16 +5,11 @@
       <div class="col-lg-6 text-center">
         <h2>新規投稿</h2>
 
-        <% if @post.errors.any? %>
-        	<div id="error_explanation">
-        		<h2><%= @pst.errors.count %>件のエラーがあります。修正お願いします。</h2>
-            	<ul>
-              	<% @post.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              	<% end %>
-           		</ul>
-           </div>
-        <% end %>
+          <ul>
+            <% @post.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
 
           <%= form_with(model: @post, url: posts_path, local: true) do |f| %>
             <p>商品画像 <%= f.attachment_field :post_image, placeholder: "画像選択" %></p><br>

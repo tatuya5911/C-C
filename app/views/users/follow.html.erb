@@ -7,16 +7,21 @@
           <table class="table">
             <tbody>
               <% @users.each do |user| %>
-                  <tr>
-                    <td>  <%= user.user_name %> </td>
-                    <td>フォロー数：<%= user.followings.count %></td>
-                    <td>フォロワー数：<%= user.followers.count %></td>
-                    <td><%= render 'relationships/follow', user: user %></td>
-                    <td><%= link_to 'Show', user_path(user) %></td>
-                  </tr>
+                <tr>
+                  <td>
+                    <%= link_to user_path(user), class: "link" do %>
+                      <%= user.user_name %>
+                    <% end %>
+                  </td>
+                  <td>フォロー数：<%= user.followings.count %></td>
+                  <td>フォロワー数：<%= user.followers.count %></td>
+                </tr>
               <% end %>
             </tbody>
           </table>
+
+          <%= paginate @users, class: "paginate" %>
+          
       </div>
     </div>
   </div>

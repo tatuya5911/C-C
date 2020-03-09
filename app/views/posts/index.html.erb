@@ -7,9 +7,9 @@
       <div class="col-md-5 list">
 
         <% if params[:id] %>
-          <h2><%= @category.category_name %>（全<%= @posts.count %>件）</h2>
+          <h2><%= @category.category_name %></h2>
         <% else %>
-          <h2>全て（全<%= @posts.count %>件）</h2>
+          <h2>全て</h2>
         <% end %>
 
         <% @posts.each do |post| %>

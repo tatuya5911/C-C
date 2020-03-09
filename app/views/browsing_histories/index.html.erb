@@ -4,6 +4,8 @@
       <div class="col-lg-3"></div>
       <div class="col-lg-6">
 
+        <h2>閲覧履歴</h2>
+
         <% @histories.each do |history| %>
           <div class="item">
             <%= link_to post_path(history.post.id) do %>

@@ -1,7 +1,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-3"></div>
+      <div class="col-lg-5"></div>
       <div class="col-lg-6">
         <%= form_with(model: @report, url: reports_path, local: true) do |f| %>
           <%= f.radio_button :body, :性的な内容 %>
@@ -15,7 +15,8 @@
           <% else %>
             <%= f.hidden_field :post_id, value: @post.id %>
           <% end %>
-          <%= f.submit '報告', class: "btn btn-info btn-sm"%>
+          <p>※上記にない場合、未選択で報告してください。</p>
+          <%= f.submit '報告', class: "btn"%>
         <% end %>
       </div>
     </div>

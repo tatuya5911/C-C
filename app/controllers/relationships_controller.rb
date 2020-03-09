@@ -15,7 +15,7 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:relationship][:follow_id])
+    user = User.find(params[:follow_id])
     following = current_user.unfollow(user)
     if following.destroy
       flash[:success] = 'フォローを解除しました'
@@ -29,7 +29,6 @@ class RelationshipsController < ApplicationController
   private
 
   def set_user
-    binding.pry
     user = User.find(params[:follow_id])
   end
 

@@ -6,6 +6,8 @@
       attributes:
         post:
           post_title: "商品名"
+          post_image: "商品画像"
+          category: "カテゴリー"
           category_id: "カテゴリー"
           body: "理由"
           aroma: "香り"
@@ -13,13 +15,21 @@
           rich: "コク"
           bitterness: "苦味"
           rate: "評価"
+      models:
+        user: "ユーザー"
+      attributes:
+        user:
+          email: "メールアドレス"
+          password: "パスワード"
+          user_name: "ニックネーム"
       errors:
+        format: "%{attribute}%{message}"
         messages:
           invalid: "が不正な値です。"
           confirmation: "が一致しません。"
           accepted: "を承諾してください。"
           empty: "が記入されていません。"
-          blank: "が記入されていません。"
+          blank: "を選択又は記入してください。"
           inclusion: "は一覧にありません。"
           exclusion: "は予約されています。"
           too_long: "は%{count}文字以内で記入してください。"
@@ -32,3 +42,5 @@
           equal_to: "は%{count}を指定してください。"
           less_than: "は%{count}より小さい値を指定してください。"
           less_than_or_equal_to: "は%{count}以下の値を指定してください。"
+          required: "は必須項目です。"
+          not_saved: "エラーが発生したため %{resource} は保存されませんでした。"
