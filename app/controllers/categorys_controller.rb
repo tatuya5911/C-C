@@ -1,8 +1,12 @@
 class CategorysController < ApplicationController
 
   def index
-    @category  = Category.new
-    @categorys = Category.all
+    if user_signed_in? && current_user.admin == true
+      @category  = Category.new
+      @categorys = Category.all
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -16,7 +20,11 @@ class CategorysController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    if user_signed_in? && current_user.admin == true
+      @category = Category.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def update

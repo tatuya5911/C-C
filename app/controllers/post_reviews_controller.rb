@@ -1,8 +1,12 @@
 class PostReviewsController < ApplicationController
 
   def new
-    @post = Post.find(params[:post_id])
-    @post_review = PostReview.new
+    if user_signed_in?
+      @post = Post.find(params[:post_id])
+      @post_review = PostReview.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create

@@ -7,9 +7,9 @@ class BrowsingHistoriesController < ApplicationController
     @histories = user.browsing_histories.page(params[:page]).per(10)
 
     if current_user != user
-      render root_path
+      redirect_to root_path
     end
-    
+
   end
 
 end
