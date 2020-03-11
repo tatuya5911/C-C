@@ -1,5 +1,4 @@
 
-
   <div class="cantainer">
     <div class="row">
       <div class="col-lg-4"></div>
@@ -46,13 +45,14 @@
       </div>
     </div>
   </div>
-    <div class="center">
-      <ul>
-      <% @post_reviews.each do |post_review| %>
-        <div id="comments_buttons_<%= post_review.id %>">
-          <%= render 'post_review', post_review:post_review, post:@post %>
-        </div>
-      <% end %>
-      </ul>
-      <%= paginate @post_reviews, class: "paginate" %>
-    </div>
+
+  <div class="center">
+    <ul>
+    <% @post_reviews.each do |post_review| %>
+      <div id="comments_buttons_<%= post_review.id %>">
+        <%= render 'post_review', post_review:post_review, post:@post %>
+      </div>
+    <% end %>
+    </ul>
+    <%= paginate @post_reviews, class: "paginate" %>
+  </div>

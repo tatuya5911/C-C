@@ -22,19 +22,13 @@
     <footer>
       <ul class="footer">
         <li class="link-list">
-          <%= link_to "Home", root_path, class: "link" %> |
+          <%= link_to "Home", root_path, class: "link" %>
         </li>
         <% if user_signed_in? %>
           <li class="link-list">
-            <%= link_to "マイページ", user_path(current_user.id), class: "link" %> |
+            | <%= link_to "マイページ", user_path(current_user.id), class: "link" %>
           </li>
         <% end %>
-        <li class="link-list">
-          <%= link_to "プライバシーポリシー", "#", class: "link" %> |
-        </li>
-        <li class="link-list">
-          <%= link_to "利用規約", "#", class: "link" %>
-        </li>
         <li class="item">@ 2020.C&C.com</li>
       </ul>
     </footer>

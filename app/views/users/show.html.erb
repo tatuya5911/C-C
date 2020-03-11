@@ -1,69 +1,68 @@
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 text-center">
-      <h2>マイページ</h2>
-        <table class="table table-bordered table-hover">
-          <tbody>
-            <tr>
-              <td>ニックネーム</td>
-              <td>
-                <%= @user.user_name %>
-              </td>
-            </tr>
-            <% if user_signed_in? && @user.id == current_user.id %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 text-center">
+        <h2>マイページ</h2>
+          <table class="table table-bordered table-hover">
+            <tbody>
               <tr>
-                <td>メールアドレス</td>
-                <td><%= @user.email %></td>
+                <td>ニックネーム</td>
+                <td>
+                  <%= @user.user_name %>
+                </td>
               </tr>
-            <% end %>
-            <tr>
-              <td>
-                <%= link_to "フォロー", user_following_path(@user.id), class: "link" %>
-              </td>
-              <td>
-                <%= link_to user_following_path(@user.id), class: "link" do %>
-                  <%= @user.followings.count %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= link_to "フォロワー", user_followers_path(@user.id), class: "link" %>
-              </td>
-              <td>
-                <%= link_to user_followers_path(@user.id), class: "link" do %>
-                  <%= @user.followers.count %>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              <% if user_signed_in? && @user.id == current_user.id %>
+                <tr>
+                  <td>メールアドレス</td>
+                  <td><%= @user.email %></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td>
+                  <%= link_to "フォロー", user_following_path(@user.id), class: "link" %>
+                </td>
+                <td>
+                  <%= link_to user_following_path(@user.id), class: "link" do %>
+                    <%= @user.followings.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to "フォロワー", user_followers_path(@user.id), class: "link" %>
+                </td>
+                <td>
+                  <%= link_to user_followers_path(@user.id), class: "link" do %>
+                    <%= @user.followers.count %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        <% if user_signed_in? && @user.id == current_user.id %>
-          <h4>登録情報変更</h4>
-            <%= link_to edit_user_path(@user.id) do %>
-              <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class: "link" do %>
-              <span class="glyphicon glyphicon-log-in" aria-hidden="true"> logout</span>
-            <% end %>
-        <% else %>
-          <%= render 'relationships/follow', user: @user %>
+          <% if user_signed_in? && @user.id == current_user.id %>
+            <h4>登録情報変更</h4>
+              <%= link_to edit_user_path(@user.id) do %>
+                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "link" do %>
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"> logout</span>
+              <% end %>
+          <% else %>
+            <%= render 'relationships/follow', user: @user %>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 text-center">
+        <h4>お気に入り</h4>
+          <%= link_to "一覧を見る", user_like_path(@user.id), class: "btn btn-default btn-block" %>
+        <% if user_signed_in? && current_user == @user %>
+          <h4>閲覧履歴</h4>
+            <%= link_to "一覧を見る", browsing_histories_path(@user.id), class: "btn btn-default btn-block" %>
         <% end %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 text-center">
-      <h4>お気に入り</h4>
-        <%= link_to "一覧を見る", user_like_path(@user.id), class: "btn btn-default btn-block" %>
-      <% if user_signed_in? && current_user == @user %>
-        <h4>閲覧履歴</h4>
-          <%= link_to "一覧を見る", browsing_histories_path(@user.id), class: "btn btn-default btn-block" %>
-      <% end %>
-  </div>
-</div>

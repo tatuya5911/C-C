@@ -14,9 +14,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    if Post.find(params[:id]) == nil
-      redirect_to :index
-    end
     @post = Post.find(params[:id])
     @category = @post.category
     @user = @post.user
@@ -43,7 +40,8 @@ class PostsController < ApplicationController
     if user_signed_in? && histories.count > histories_stock_limit
       histories[0].destroy
     end
-
+  rescue ActiveRecord::RecordNotFound
+    redirect_to posts_url, notice:"対象の投稿はありませんでした"
   end
 
   def search

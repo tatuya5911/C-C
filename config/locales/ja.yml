@@ -3,6 +3,7 @@
     activerecord:
       models:
         post: "投稿"
+        user: "ユーザー"
       attributes:
         post:
           post_title: "商品名"
@@ -15,9 +16,6 @@
           rich: "コク"
           bitterness: "苦味"
           rate: "評価"
-      models:
-        user: "ユーザー"
-      attributes:
         user:
           email: "メールアドレス"
           password: "パスワード"

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :homes, only: [:index]
   get 'posts/category/:id' => 'posts#index', as: "posts_category"
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
-  resources :users, only: [:show, :like, :edit, :update] do
+  resources :users, only: [:index, :show, :like, :edit, :update] do
     get :following, :followers, :like
   end
   resources :relationships, only: [:create, :destroy]
