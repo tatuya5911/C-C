@@ -1,36 +1,36 @@
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 text-center">
-      <h2>変更する内容</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 text-center">
+        <h2>変更する内容</h2>
 
-      <% if @post.errors.any? %>
-      	<div id="error_explanation">
-      		<h2><%= @pst.errors.count %>件のエラーがあります。修正お願いします。</h2>
-          	<ul>
-            	<% @post.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            	<% end %>
-         		</ul>
-         </div>
-      <% end %>
-
-        <%= form_with(model: @post, url: post_path, local: true) do |f| %>
-          <p>商品画像 <%= f.attachment_field :post_image, placeholder: "画像選択" %></p><br>
-          <p>商品名(35文字以内) <%= f.text_field :post_title, class: "post-title text-center", placeholder: "商品名" %></p><br>
-          <p>商品カテゴリー <%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %></p><br>
-          <p>香り <%= f.select :aroma, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"香り" %></p><br>
-          <p>酸味 <%= f.select :acidity, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"酸味" %></p><br>
-          <p>コク <%= f.select :rich, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"コク" %></p><br>
-          <p>苦味 <%= f.select :bitterness, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"苦味" %></p><br>
-          <p>商品評価(半角英数字のみ) <%= f.text_field :rate, class: "text-center", placeholder: "評価を0点〜100点までで記入してください" %> 点</p><br>
-          <p>
-            商品説明(おすすめポイントなど)(300字以内)<%= f.text_area :body, class: "comment text-center", placeholder: "商品内容やおすすめポイントなどを記入してください" %><br>
-          </p>
-          <p>※すべての項目が必須項目です。</p>
-          <%= f.submit "編集する" %>
+        <% if @post.errors.any? %>
+        	<div id="error_explanation">
+        		<h2><%= @pst.errors.count %>件のエラーがあります。修正お願いします。</h2>
+            	<ul>
+              	<% @post.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              	<% end %>
+           		</ul>
+           </div>
         <% end %>
+
+          <%= form_with(model: @post, url: post_path, local: true) do |f| %>
+            <p>商品画像 <%= f.attachment_field :post_image, placeholder: "画像選択" %></p><br>
+            <p>商品名(35文字以内) <%= f.text_field :post_title, class: "post-title text-center", placeholder: "商品名" %></p><br>
+            <p>商品カテゴリー <%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %></p><br>
+            <p>香り <%= f.select :aroma, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"香り" %></p><br>
+            <p>酸味 <%= f.select :acidity, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"酸味" %></p><br>
+            <p>コク <%= f.select :rich, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"コク" %></p><br>
+            <p>苦味 <%= f.select :bitterness, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"苦味" %></p><br>
+            <p>商品評価(半角英数字のみ) <%= f.text_field :rate, class: "text-center", placeholder: "評価を0点〜100点までで記入してください" %> 点</p><br>
+            <p>
+              商品説明(おすすめポイントなど)(300字以内)<%= f.text_area :body, class: "comment text-center", placeholder: "商品内容やおすすめポイントなどを記入してください" %><br>
+            </p>
+            <p>※すべての項目が必須項目です。</p>
+            <%= f.submit "編集する" %>
+          <% end %>
+      </div>
     </div>
   </div>
-</div>

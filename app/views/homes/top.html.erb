@@ -18,6 +18,11 @@
             一人では見つけにくい好みのコーヒーも皆さんが共有すれば、見つかる可能性はグッと高くなります。<br>
             みんなで自分にあったコーヒーを見つけよう！
           </p>
+          <% unless user_signed_in? %>
+            <p>
+              ※投稿やコメントは登録・ログインしないとできません。
+            </p>
+          <% end %>
         </div>
         <div class="center">
           <% if user_signed_in? %>
@@ -27,9 +32,11 @@
             <%= link_to "ログイン", new_user_session_path, class: "btn" %>
           <% end %>
         </div>
-        <div class="center">
-          <%= link_to "おすすめのコーヒーを共有する", new_post_path, class: "btn" %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="center">
+            <%= link_to "おすすめのコーヒーを共有する", new_post_path, class: "btn" %>
+          </div>
+        <% end %>
 
         <div class="text-center">
           <div class="content text-center">
@@ -49,7 +56,7 @@
       					<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
       			  <% end %>
       			<% end %>
-      			<p><%= link_to "その他を表示", posts_path, class: "link" %></p>
+      			<p><%= link_to "その他を表示", homes_path, class: "link" %></p>
           </div>
 
           <div class="content text-center">
@@ -64,8 +71,8 @@
 
           <div class="text-center">
             <h4>こんな投稿がされてるよ</h4>
-            <% @posts.shuffle.first(10).each do |post| %>
-    			    <%= link_to post_path(post.id) do %>
+            <% @posts.shuffle.first(8).each do |post| %>
+    			    <%= link_to post_path(post.id), class: "link-to-post-detail" do %>
     						<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
     			    <% end %>
     			  <% end %>
@@ -74,24 +81,25 @@
 
         <div class="links text-center">
           <ul>
-            <li><%= link_to "投稿一覧", posts_path, class: "link" %></li> |
-            <li><%= link_to "最近の投稿", posts_path, class: "link" %></li> |
-            <li><%= link_to "ランキング", rank_path, class: "link" %></li> |
+            <li class="link-list"><%= link_to "投稿一覧", posts_path, class: "link" %></li> |
+            <li class="link-list"><%= link_to "最近の投稿", posts_path, class: "link" %></li> |
+            <li class="link-list"><%= link_to "ランキング", rank_path, class: "link" %></li> |
             <% if user_signed_in? && current_user.admin == true %>
-              <li><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
-              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
-              <li><%= link_to "カテゴリー作成", categorys_path, class: "link" %></li> |
-              <li><%= link_to "通報", reports_path, class: "link" %></li> |
+              <li class="link-list"><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
+              <li class="link-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
+              <li class="link-list"><%= link_to "カテゴリー作成", categorys_path, class: "link" %></li> |
+              <li class="link-list"><%= link_to "通報", reports_path, class: "link" %></li> |
+              <li class="link-list"><%= link_to "ユーザー一覧", posts_path, class: "link" %></li> |
             <% elsif user_signed_in? %>
-              <li><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
-              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
+              <li class="link-list"><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
+              <li class="link-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
             <% else %>
-              <li><%= link_to "新規登録", new_user_registration_path, class: "link" %></li> |
-              <li><%= link_to "ログイン", new_user_session_path, class: "link" %></li> |
+              <li class="link-list"><%= link_to "新規登録", new_user_registration_path, class: "link" %></li> |
+              <li class="link-list"><%= link_to "ログイン", new_user_session_path, class: "link" %></li> |
             <% end %>
           </ul>
           <ul>
-            カテゴリー: <li>
+            カテゴリー: <li class="link-list">
               <% @categorys.each do |category| %>
                 <%= link_to posts_category_path(category.id), class: "link" do %>
                   <%= category.category_name %>
@@ -99,11 +107,7 @@
               <% end %>
             </li>
           </ul>
-
         </div>
-
-
-
 
   		</div>
     </div>

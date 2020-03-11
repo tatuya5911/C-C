@@ -1,0 +1,22 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 text-center">
+        <h2>ユーザー一覧</h2>
+        <table class="table">
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(user.id), class: "link" do %>
+                    <%= user.user_name %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

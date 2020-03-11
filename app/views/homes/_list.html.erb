@@ -12,7 +12,7 @@
           <% categorys.each do |category| %>
             <tr>
               <td>
-                <%= link_to posts_category_path(category.id) do %>
+                <%= link_to posts_category_path(category.id), class: "link" do %>
                   <%= category.category_name %>
                 <% end %>
               </td>
@@ -20,10 +20,12 @@
           <% end %>
         </tbody>
     </table>
-    <div class="left-link">
-      <%= link_to "投稿する", new_post_path, class: "btn btn-info col-md-12" %>
-    </div>
-    <div class="left-link">
-      <%= link_to "閲覧履歴", browsing_histories_path(current_user.id), class: "btn btn-info col-md-12" %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="left-link">
+        <%= link_to "投稿する", new_post_path, class: "btn col-md-12" %>
+      </div>
+      <div class="left-link">
+        <%= link_to "閲覧履歴", browsing_histories_path(current_user.id), class: "btn col-md-12" %>
+      </div>
+    <% end %>
   </div>

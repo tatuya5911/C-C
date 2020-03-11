@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
+  def index
+    @users = User.all.page(params[:page]).per(30)
+  end
+
   def show
     @user = User.find(params[:id])
   end
 
   def like
     user = User.find(params[:user_id])
-    @likes = user.likes
+    @likes = user.likes.page(params[:page]).per(10)
   end
 
   def edit
@@ -21,13 +27,13 @@ class UsersController < ApplicationController
 
   def following
     @user  = User.find(params[:user_id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(30)
     render 'follow'
   end
 
   def followers
     @user  = User.find(params[:user_id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(30)
     render 'follower'
   end
 

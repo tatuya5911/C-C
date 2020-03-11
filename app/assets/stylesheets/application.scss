@@ -44,10 +44,6 @@ footer {
   height: 99px;
 }
 
-li {
-  display: inline-block;
-}
-
 table {
   border-style: none;
 }
@@ -64,11 +60,20 @@ td {
   font-size: 60px;
   color: #000;
   font-family: cursive;
+  margin-left: 650px;
+}
+
+.title:hover {
+  text-decoration: none;
 }
 
 .footer {
   text-align: center;
   padding-top: 36px;
+}
+
+.link-list {
+  display: inline-block;
 }
 
 .input-mysize {
@@ -135,37 +140,6 @@ input[type="file"] {
   padding-right: 20px;
 }
 
-
-
-.signin_title {
-  padding-left: 224px;
-}
-
-.field {
-  text-align: center;
-}
-
-.text {
-  padding-left: 20px;
-  color: #808080;
-}
-
-.top_list {
-  display: inline;
-  overflow: hidden;
+.link-to-post-detail:hover {
   text-decoration: none;
-  padding-left: 10px;
-}
-
-.attachment {
-  text-decoration: none;
-}
-
-.top-link {
-  display: inline;
-  float: right;
-}
-
-.left-link {
-  padding-top: 20px;
 }
