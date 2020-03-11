@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all.page(params[:page]).per(30)
+    if user_signed_in? && current_user.admin == true
+      @users = User.all.page(params[:page]).per(30)
+    else
+      redirect_to root_path
+    end
   end
 
   def show

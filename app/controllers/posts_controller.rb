@@ -49,7 +49,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if user_signed_in?
+      @post = Post.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -66,8 +70,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @user = @post.user
-    @category = @post.category
+    if user_signed_in? && @post.user == current_user
+      @user = @post.user
+      @category = @post.category
+    else
+      redirect_to root_path
+    end
   end
 
   def update

@@ -1,10 +1,11 @@
 class ReportsController < ApplicationController
 
   def index
-    if current_user.admin == false
+    if user_signed_in? && current_user.admin == true
+      @reports = Report.all
+    else
       redirect_to root_path
     end
-    @reports = Report.all
   end
 
   def thanks
@@ -27,12 +28,13 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    if current_user.admin == false
+    if user_signed_in? && current_user.admin == true
+      report = Report.find(params[:id])
+      report.destroy!
+      redirect_to reports_path
+    else
       redirect_to root_path
     end
-    report = Report.find(params[:id])
-    report.destroy!
-    redirect_to reports_path
   end
 
   private
