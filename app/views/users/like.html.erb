@@ -1,0 +1,26 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+
+        <% @likes.each do |like| %>
+          <div class="item">
+            <%= link_to post_path(like.post.id) do %>
+              <%= attachment_image_tag like.post, :post_image, size: "200x200", align: "left", class: "img item-img" %><br>
+              <h3 class="link"><%= like.post.post_title %></h3>
+            <% end %>
+            <p><%= like.post.category.category_name %>|<%= like.post.rate %>点</p><br>
+            <p>投稿者:
+              <%= link_to user_path(like.id), class: "link" do %>
+                <%= like.user.user_name %>
+              <% end %>
+            </p><br clear="left">
+          </div>
+        <% end %>
+
+        <%= paginate @likes, class: "paginate" %>
+
+      </div>
+    </div>
+  </div>

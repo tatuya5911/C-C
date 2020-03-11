@@ -1,0 +1,27 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <h2>フォロー中</h2>
+          <table class="table">
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <%= link_to user_path(user), class: "link" do %>
+                      <%= user.user_name %>
+                    <% end %>
+                  </td>
+                  <td>フォロー数：<%= user.followings.count %></td>
+                  <td>フォロワー数：<%= user.followers.count %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <%= paginate @users, class: "paginate" %>
+          
+      </div>
+    </div>
+  </div>

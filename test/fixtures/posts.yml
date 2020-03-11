@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  category_id: 1
+  post_image_id: MyString
+  post_title: MyString
+  body: MyText
+  aroma: 1
+  acidity: 1
+  rich: 1
+  bitterness: MyString
+
+two:
+  user_id: 1
+  category_id: 1
+  post_image_id: MyString
+  post_title: MyString
+  body: MyText
+  aroma: 1
+  acidity: 1
+  rich: 1
+  bitterness: MyString

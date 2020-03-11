@@ -1,0 +1,25 @@
+
+  <div class="comtainer">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 text-center">
+        <h2>カテゴリー作成</h2>
+
+          <%= form_with(model: @category, url: categorys_path, local: true) do |f| %>
+            <%= f.text_field :category_name, placeholder:"カテゴリー名" %>
+            <%= f.submit "追加" %>
+          <% end %>
+
+        <h2>カテゴリー一覧</h2>
+
+          <% @categorys.each do |category| %>
+            <ul>
+              <li><%= category.category_name %></li>
+              | <%= link_to "編集する", edit_category_path(category.id), class: "link" %>
+              | <%= link_to "削除する", category_path(category.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "link" %>
+            </ul>
+          <% end %>
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,132 @@
+diff --git a/app/controllers/likes_controller.rb b/app/controllers/likes_controller.rb
+index e14c83f..242ae2f 100644
+--- a/app/controllers/likes_controller.rb
++++ b/app/controllers/likes_controller.rb
+@@ -4,7 +4,6 @@ class LikesController < ApplicationController
+     @post = Post.find(params[:post_id])
+     @like = current_user.likes.create(post_id: params[:post_id])
+     @like.save!
+-    binding.pry
+   end
+ 
+   def destroy
+diff --git a/app/controllers/post_reviews_controller.rb b/app/controllers/post_reviews_controller.rb
+index 9e7b456..b9a6d0f 100644
+--- a/app/controllers/post_reviews_controller.rb
++++ b/app/controllers/post_reviews_controller.rb
+@@ -1,14 +1,13 @@
+ class PostReviewsController < ApplicationController
+ 
+   def create
+-    post = Post.find(params[:post_id])
++    @post = Post.find(params[:post_id])
+     @post_review = current_user.post_reviews.new(post_review_params)
+-    @post_review.post_id = post.id
++    @post_review.post_id = @post.id
+     @post_review.save!
+   end
+ 
+   def destroy
+-
+     post = Post.find(params[:post_id])
+     @post_review = current_user.post_reviews.find_by(post_id: post.id)
+     @post_review.destroy!
+diff --git a/app/controllers/posts_controller.rb b/app/controllers/posts_controller.rb
+index 42c2d40..ae052fe 100644
+--- a/app/controllers/posts_controller.rb
++++ b/app/controllers/posts_controller.rb
+@@ -25,7 +25,6 @@ class PostsController < ApplicationController
+ 
+   def create
+     @post = Post.new(post_params)
+-    binding.pry
+     @post.user_id = current_user.id
+     if @post.save
+       redirect_to post_path(@post.id), notice:"投稿しました"
+diff --git a/app/views/post_reviews/create.js.erb b/app/views/post_reviews/create.js.erb
+index f3f8c7d..92b80a5 100644
+--- a/app/views/post_reviews/create.js.erb
++++ b/app/views/post_reviews/create.js.erb
+@@ -1,3 +1,3 @@
+ $('#list').append("<%= j(render partial: 'posts/post_review', locals: { post_review: @post_review, post: @post} ) %>");
+-$('#post_review_title').val('');
+-$('#post_review_comment').val('');
++$('input[name="post_review[title]"]').val('');
++$('textarea[name="post_review[comment]"]').val('');
+diff --git a/app/views/posts/_like.html.erb b/app/views/posts/_like.html.erb
+index 87f2cc1..a5b5ea5 100644
+--- a/app/views/posts/_like.html.erb
++++ b/app/views/posts/_like.html.erb
+@@ -1,6 +1,6 @@
+ 
+ <% if current_user.already_liked?(post) %>
+-  <%= button_to 'いいねを取り消す', post_like_path(post), method: :delete, remote: true  %>
++  <%= button_to 'いいねを取り消す', post_likes_path(post), method: :delete, remote: true  %>
+ <% else %>
+   <%= button_to 'いいね', post_likes_path(post), method: :post, remote: true  %>
+ <% end %>
+diff --git a/app/views/posts/_post_review.html.erb b/app/views/posts/_post_review.html.erb
+index 52958b5..a22ae0f 100644
+--- a/app/views/posts/_post_review.html.erb
++++ b/app/views/posts/_post_review.html.erb
+@@ -1,7 +1,7 @@
+ <li>
+ title:  <%= post_review.title %><br>
+ comment:  <%= post_review.comment %><br>
+-  <% if post_review.user == current_user && post != nil%>
+-    <%= link_to "削除する", post_post_review_path(post), method: :delete, remote: true %>
++  <% if post_review.user == current_user%>
++    <%= link_to "削除する", post_post_reviews_path(post), method: :delete, remote: true %>
+   <% end %>
+ </li>
+diff --git a/app/views/posts/show.html.erb b/app/views/posts/show.html.erb
+index 53d277c..296fddc 100644
+--- a/app/views/posts/show.html.erb
++++ b/app/views/posts/show.html.erb
+@@ -8,7 +8,7 @@
+   <%= link_to "編集する", edit_post_path %>
+   <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+ 
+-  <%= form_with(model: [@post, @post_review]) do |f| %>
++  <%= form_with(model: [@post, @post_review]) do |f| %>vi
+     <div id="comment_button_<%= @post.id %>">
+       <%= f.text_field :title, placeholder: "タイトル" %><br>
+       <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメント" %><br>
+@@ -18,7 +18,7 @@
+   <ul id="list">
+   <% @post_reviews.each do |post_review| %>
+     <div id="comments_buttons_<%= post_review.id %>">
+-      <%= render 'posts/post_review', post_review:post_review, post:@post %>
++      <%= render 'post_review', post_review:post_review, post:@post %>
+     </div>
+   <% end %>
+   </ul>
+diff --git a/config/application.rb b/config/application.rb
+index f1d89ae..806c914 100644
+--- a/config/application.rb
++++ b/config/application.rb
+@@ -9,7 +9,8 @@ Bundler.require(*Rails.groups)
+ module C
+   class Application < Rails::Application
+     # Initialize configuration defaults for originally generated Rails version.
+-    config.load_defaults 5.2
++    config.i18n.default_locale = :ja
++    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+ 
+     # Settings in config/environments/* take precedence over those specified here.
+     # Application configuration can go into files in config/initializers
+diff --git a/config/routes.rb b/config/routes.rb
+index ddd5cc6..f54c505 100644
+--- a/config/routes.rb
++++ b/config/routes.rb
+@@ -7,8 +7,8 @@ Rails.application.routes.draw do
+   root 'homes#top'
+   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
+   resources :posts, only: [:index, :show, :search, :new, :create, :edit, :update, :destroy] do
+-    resources :post_reviews, only: [:create, :destroy]
+-    resources :likes, only: [:create, :destroy]
++    resource :post_reviews, only: [:create, :destroy]
++    resource :likes, only: [:create, :destroy]
+   end
+ 
+ end

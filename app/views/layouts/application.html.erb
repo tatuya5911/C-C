@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>C</title>
+    <title>C&C</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,28 @@
   </head>
 
   <body>
+
+    <header>
+      <%= link_to "C&C", root_path, class: "title" %>
+    </header>
+
+    <main>
     <%= yield %>
+    </main>
+
+    <footer>
+      <ul class="footer">
+        <li class="link-list">
+          <%= link_to "Home", root_path, class: "link" %>
+        </li>
+        <% if user_signed_in? %>
+          <li class="link-list">
+            | <%= link_to "マイページ", user_path(current_user.id), class: "link" %>
+          </li>
+        <% end %>
+        <li class="item">@ 2020.C&C.com</li>
+      </ul>
+    </footer>
+
   </body>
 </html>

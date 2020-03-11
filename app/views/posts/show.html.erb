@@ -1,0 +1,58 @@
+
+  <div class="cantainer">
+    <div class="row">
+      <div class="col-lg-4"></div>
+
+      <div class="col-lg-3">
+        <%= attachment_image_tag @post, :post_image %>
+      </div>
+
+      <div class="col-lg-3">
+        <p><strong>投稿者</strong>:
+          <%= link_to user_path(@user.id), class: "link" do %>
+            <%= @user.user_name %>
+          <% end %>
+        </p>
+        <p><strong>商品名</strong>: <%= @post.post_title %></p>
+        <p><strong>カテゴリー</strong>:
+          <%= link_to posts_category_path(@post.category.id), class: "link" do %>
+            <%= @category.category_name %>
+          <% end %>
+        </p>
+        <p><strong>香り</strong>: <%= @post.aroma %></p>
+        <p><strong>酸味</strong>: <%= @post.acidity %></p>
+        <p><strong>コク</strong>: <%= @post.rich %></p>
+        <p><strong>苦味</strong>: <%= @post.bitterness %></p>
+        <p>※５段階評価</p>
+        <p><strong>評価</strong>: <%= @post.rate %>点</p>
+        <p><strong>説明</strong>: <%= @post.body %></p>
+
+        <% if user_signed_in? %>
+          <div id="likes_buttons_<%= @post.id %>">
+            <%= render 'like', post: @post %>
+          </div>
+          <%= link_to "コメントする", new_post_post_reviews_path(@post.id), class: "link" %> |
+        <% end %>
+
+        <% if user_signed_in? && current_user == @post.user %>
+          <%= link_to "編集する", edit_post_path, class: "link" %> |
+          <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' }, class: "link" %>
+        <% elsif user_signed_in? && current_user.admin == true %>
+          <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか?' }, class: "link" %>
+        <% elsif user_signed_in? %>
+          <%= link_to "通報する", new_report_path(post_id: @post.id), class: "link" %> |
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <ul>
+    <% @post_reviews.each do |post_review| %>
+      <div id="comments_buttons_<%= post_review.id %>">
+        <%= render 'post_review', post_review:post_review, post:@post %>
+      </div>
+    <% end %>
+    </ul>
+    <%= paginate @post_reviews, class: "paginate" %>
+  </div>

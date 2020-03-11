@@ -1,0 +1,13 @@
+
+  <li>
+    <%= link_to user_path(@user.id), class: "link comment" do %>
+      投稿者: <%= post_review.user.user_name %>
+    <% end %>
+    <% if post_review.user == current_user || current_user.admin == true %>
+      <%= link_to "削除する", post_post_reviews_path(post), class: "link", method: :delete, remote: true %><br>
+    <% else %>
+      <%= link_to "通報する", new_report_path(post_review_id: post_review.id), class: "link" %><br>
+    <% end %>
+    <p>タイトル: <%= post_review.title %></p><br>
+    <p>コメント: <%= post_review.comment %></p><br>
+  </li>
