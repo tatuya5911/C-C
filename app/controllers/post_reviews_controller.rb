@@ -18,6 +18,7 @@ class PostReviewsController < ApplicationController
     else
       flash[:alert] = "コメントに失敗しました。コメント内容をご確認してください"
       render :new
+    end
   end
 
   def destroy
