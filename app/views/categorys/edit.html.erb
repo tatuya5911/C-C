@@ -8,6 +8,14 @@
         現在のカテゴリー名:<%= @category.category_name %>
 
         <%= form_with(model: @category, url: category_path, lacal: true) do |f| %>
+          <% if @category.errors.any? %>
+            <ul>
+              <% @category.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          
           新しいカテゴリー名:<%= f.text_field :category_name, value: "", placeholder:"カテゴリー名" %>
           <%= f.submit "変更を保存する" %>
         <% end %>

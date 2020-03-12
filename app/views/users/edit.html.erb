@@ -5,12 +5,20 @@
       <div class="col-lg-6 text-center">
 
         <h2>登録情報編集</h2>
+
+          <% if @user.errors.any? %>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
           <%= form_with(model: @user, url: user_path) do |f| %>
             <p>ニックネーム: <%= f.text_field :user_name %></p><br>
             <p>メールアドレス: <%= f.email_field :email %></p><br>
             <%= f.submit "変更する" %>
           <% end %>
-          
+
       </div>
     </div>
   </div>
