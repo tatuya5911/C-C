@@ -82,7 +82,7 @@
         <div class="links text-center">
           <ul>
             <li class="link-list"><%= link_to "投稿一覧", posts_path, class: "link" %></li> |
-            <li class="link-list"><%= link_to "最近の投稿", posts_path, class: "link" %></li> |
+            <li class="link-list"><%= link_to "最近の投稿", homes_path, class: "link" %></li> |
             <li class="link-list"><%= link_to "ランキング", rank_path, class: "link" %></li> |
             <% if user_signed_in? && current_user.admin == true %>
               <li class="link-list"><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |

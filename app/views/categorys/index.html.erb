@@ -5,8 +5,14 @@
       <div class="col-lg-6 text-center">
         <h2>カテゴリー作成</h2>
 
+          <ul>
+            <% @category.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+
           <%= form_with(model: @category, url: categorys_path, local: true) do |f| %>
-            <%= f.text_field :category_name, placeholder:"カテゴリー名" %>
+            <%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)" %>
             <%= f.submit "追加" %>
           <% end %>
 

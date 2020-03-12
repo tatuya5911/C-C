@@ -12,10 +12,9 @@ class CategorysController < ApplicationController
   def create
     category = Category.new(category_params)
     if category.save!
-      redirect_to categorys_path, notice:"新たなカテゴリーを作成しました"
+      redirect_to categorys_path
     else
-      @categorys = Category.all
-      render :index, notice:"カテゴリー作成に失敗しました"
+      render :index
     end
   end
 
@@ -30,10 +29,9 @@ class CategorysController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to categorys_path, notice:"カテゴリー名を変更しました"
+      redirect_to categorys_path
     else
-      @category = Category.find(params[:id])
-      render :edit, notice:"カテゴリー名変更に失敗しました."
+      render :edit
     end
   end
 

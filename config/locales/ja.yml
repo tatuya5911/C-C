@@ -4,6 +4,7 @@
       models:
         post: "投稿"
         user: "ユーザー"
+        post_review: "コメント"
       attributes:
         post:
           post_title: "商品名"
@@ -20,6 +21,9 @@
           email: "メールアドレス"
           password: "パスワード"
           user_name: "ニックネーム"
+        post_review:
+          title: "タイトル"
+          comment: "コメント"
       errors:
         format: "%{attribute}%{message}"
         messages:
