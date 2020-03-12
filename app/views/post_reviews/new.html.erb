@@ -12,7 +12,7 @@
           </ul>
         <% end %>
 
-        <%= form_with(model: [@post, @post_review]) do |f| %>
+        <%= form_with(model: [@post, @post_review], local: true) do |f| %>
           <div id="comment_button_<%= @post.id %>">
             <%= f.text_field :title, class: "post-title text-center", placeholder: "タイトル(35字以内)" %><br>
             <%= f.text_area :comment, class: "comment text-center",placeholder: "この投稿にコメントをしよう！(300字以内)" %><br>

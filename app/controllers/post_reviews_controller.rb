@@ -12,9 +12,9 @@ class PostReviewsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post_review = current_user.post_reviews.new(post_review_params)
-    @post_review.post_id = post.id
+    @post_review.post_id = @post.id
     if @post_review.save
-      redirect_to post_path(post.id)
+      redirect_to post_path(@post.id)
     else
       render :new
     end
@@ -29,7 +29,7 @@ class PostReviewsController < ApplicationController
   private
 
   def post_review_params
-    params.require(:post_review).permit(:user_id, :post_id, :title, :comment, :rate)
+    params.require(:post_review).permit(:user_id, :post_id, :title, :comment)
   end
 
 end
