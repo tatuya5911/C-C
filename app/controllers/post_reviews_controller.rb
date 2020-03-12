@@ -10,7 +10,7 @@ class PostReviewsController < ApplicationController
   end
 
   def create
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     @post_review = current_user.post_reviews.new(post_review_params)
     @post_review.post_id = post.id
     if @post_review.save
