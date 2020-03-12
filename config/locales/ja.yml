@@ -5,6 +5,7 @@
         post: "投稿"
         user: "ユーザー"
         post_review: "コメント"
+        category: "カテゴリー"
       attributes:
         post:
           post_title: "商品名"
@@ -24,6 +25,8 @@
         post_review:
           title: "タイトル"
           comment: "コメント"
+        category:
+          category_name: "カテゴリー名"
       errors:
         format: "%{attribute}%{message}"
         messages:

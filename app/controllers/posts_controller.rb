@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       histories[0].destroy
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to posts_url, notice:"対象の投稿はありませんでした"
+    redirect_to posts_url
   end
 
   def search
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      redirect_to post_path(@post.id), notice:"投稿しました"
+      redirect_to post_path(@post.id)
     else
       render :new
     end
