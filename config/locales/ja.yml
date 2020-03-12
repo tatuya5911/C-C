@@ -22,6 +22,7 @@
           email: "メールアドレス"
           password: "パスワード"
           user_name: "ニックネーム"
+          password_confirmation: "パスワード（確認用）"
         post_review:
           title: "タイトル"
           comment: "コメント"
