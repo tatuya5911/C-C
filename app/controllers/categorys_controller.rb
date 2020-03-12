@@ -11,7 +11,7 @@ class CategorysController < ApplicationController
 
   def create
     category = Category.new(category_params)
-    if category.save!
+    if category.save
       redirect_to categorys_path
     else
       render :index
