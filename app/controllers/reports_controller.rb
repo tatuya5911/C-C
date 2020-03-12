@@ -13,6 +13,10 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+    unless user_signed_in?
+      redirect_to root_path
+    end
+    
     if params[:post_id].present?
       @post = Post.find(params[:post_id])
     else
