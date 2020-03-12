@@ -13,8 +13,11 @@ class PostReviewsController < ApplicationController
     post = Post.find(params[:post_id])
     @post_review = current_user.post_reviews.new(post_review_params)
     @post_review.post_id = post.id
-    @post_review.save!
-    redirect_to post_path(post.id)
+    if @post_review.save
+      redirect_to post_path(post.id)
+    else
+      flash[:alert] = "コメントに失敗しました。コメント内容をご確認してください"
+      render :new
   end
 
   def destroy
