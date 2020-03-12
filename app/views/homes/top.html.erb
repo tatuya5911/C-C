@@ -73,7 +73,7 @@
             <h4>こんな投稿がされてるよ</h4>
             <% @posts.shuffle.first(8).each do |post| %>
     			    <%= link_to post_path(post.id), class: "link-to-post-detail" do %>
-    						<li><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
+    						<li class="link-list"><%= attachment_image_tag post, :post_image, size: "150x170", class: "img" %></li>
     			    <% end %>
     			  <% end %>
           </div>
