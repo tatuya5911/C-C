@@ -89,7 +89,7 @@
               <li class="link-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
               <li class="link-list"><%= link_to "カテゴリー作成", categorys_path, class: "link" %></li> |
               <li class="link-list"><%= link_to "通報", reports_path, class: "link" %></li> |
-              <li class="link-list"><%= link_to "ユーザー一覧", posts_path, class: "link" %></li> |
+              <li class="link-list"><%= link_to "ユーザー一覧", users_path, class: "link" %></li> |
             <% elsif user_signed_in? %>
               <li class="link-list"><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li> |
               <li class="link-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></li> |
