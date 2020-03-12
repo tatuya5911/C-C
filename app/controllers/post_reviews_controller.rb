@@ -16,8 +16,7 @@ class PostReviewsController < ApplicationController
     if @post_review.save
       redirect_to post_path(post.id)
     else
-      flash[:alert] = "コメントに失敗しました。コメント内容をご確認してください"
-      render post_post_reviews_path(post.id)
+      render :new
     end
   end
 
