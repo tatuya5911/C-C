@@ -14,6 +14,7 @@ class CategorysController < ApplicationController
     if category.save
       redirect_to categorys_path
     else
+      @categorys = Category.all
       render :index
     end
   end
