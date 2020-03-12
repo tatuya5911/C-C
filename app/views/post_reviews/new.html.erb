@@ -10,6 +10,8 @@
           <% end %>
         </ul>
 
+        <%=   flash[:alert]  %>
+
         <%= form_with(model: [@post, @post_review]) do |f| %>
           <div id="comment_button_<%= @post.id %>">
             <%= f.text_field :title, class: "post-title text-center", placeholder: "タイトル(35字以内)" %><br>
