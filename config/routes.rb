@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   get 'ranking' => 'homes#rank', as: "rank"
   get 'latest' => 'homes#latest', as: "latest"
   get 'homes/:user_id' => 'homes#index', as: "homes"
+  get 'policy' => 'homes#policy', as: "policy"
+  get 'privacy' => 'homes#privacy', as: "privacy"
   get 'posts/category/:id' => 'posts#index', as: "posts_category"
+  get 'thanks' => 'homes#thanks', as: "thanks"
+  get 'browsing_histories/:user_id' => 'browsing_histories#index', as: "browsing_histories"
+  get 'search' => 'posts#search', as: "search"
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :like, :edit, :update] do
     get :following, :followers, :like
@@ -19,8 +24,5 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
   resources :reports, only: [:index, :new, :create, :destroy]
-  get 'thanks' => 'homes#thanks', as: "thanks"
-  get 'browsing_histories/:user_id' => 'browsing_histories#index', as: "browsing_histories"
-  get 'search' => 'posts#search', as: "search"
 
 end

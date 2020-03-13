@@ -22,4 +22,10 @@ class HomesController < ApplicationController
     @posts = @user.posts.page(params[:page]).per(10)
   end
 
+  def policy
+  end
+
+  def privacy
+  end
+
 end
