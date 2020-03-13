@@ -149,3 +149,17 @@ input[type="file"] {
   text-decoration: none;
   display: inline-block
 }
+
+.pagination>li>a {
+  padding-left: 10px;
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+}
+
+.pagination>li>a:hover {
+  opacity: 0.7;
+}

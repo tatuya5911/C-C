@@ -50,3 +50,10 @@
           less_than_or_equal_to: "は%{count}以下の値を指定してください。"
           required: "は必須項目です。"
           not_saved: "エラーが発生したため %{resource} は保存されませんでした。"
+    views:
+      pagination:
+        first: "最初"
+        last: "最後"
+        previous: "前"
+        next: "次"
+        truncate: "..."
