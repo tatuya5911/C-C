@@ -4,7 +4,7 @@
 
       <%= render 'homes/list' %>
 
-      <div class="col-md-5 list">
+      <div class="col-md-8 text-left list">
 
         <% if params[:id] %>
           <h2><%= @category.category_name %></h2>
@@ -13,13 +13,16 @@
         <% end %>
 
         <% @posts.each do |post| %>
-          <div class="item">
-            <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :post_image, size: "200x200", align: "left", class: "img item-img" %><br>
-              <h3 class="link"><%= post.post_title %></h3>
+          <h3>
+            <%= link_to post_path(post.id), class: "link" do %>
+              <%= post.post_title %><br>
             <% end %>
-            <p><%= post.category.category_name %>|<%= post.rate %>点</p><br clear="left">
-          </div>
+          </h3>
+          <%= link_to post_path(post.id) do %>
+            <%= attachment_image_tag post, :post_image, size: "200x200", align: "left", class: "img item-img" %><br>
+          <% end %>
+          <h4>カテゴリー:<%= post.category.category_name %></h4><br>
+          <h4>評価:<%= post.rate %>点</h4><br clear="left">
         <% end %>
 
         <%= paginate @posts, class: "paginate" %>
