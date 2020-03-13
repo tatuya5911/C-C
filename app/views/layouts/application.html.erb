@@ -24,6 +24,12 @@
         <li class="link-list">
           <%= link_to "Home", root_path, class: "link" %>
         </li>
+        <li class="link-list">
+          | <%= link_to "利用規約", policy_path, class: "link" %>
+        </li>
+        <li class="link-list">
+          | <%= link_to "プライバシーポリシー", privacy_path, class: "link" %>
+        </li>
         <% if user_signed_in? %>
           <li class="link-list">
             | <%= link_to "マイページ", user_path(current_user.id), class: "link" %>
