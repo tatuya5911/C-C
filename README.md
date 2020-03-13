@@ -1,24 +1,39 @@
-# README
+# C&C
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  C&Cとは、Coffee&Connectの略語で、自分の好みのコーヒーと出会えることを願って命名しました。
+  SNSのように自分のおすすめのコーヒーを投稿し、様々な方と共有することで様々な方の好みのコーヒーを見つけるというような口コミサイトです。
 
-Things you may want to cover:
+# Features
 
-* Ruby version
+  C&Cは、会社が運営するのではなく、個人で運用していくことを前提に作られているため、管理者の負担が増えないようにユーザー自身が、
+  商品を投稿し、評価するようになっています。また、この口コミサイトは、コーヒーだけの口コミのためコーヒーをイメージし、レイアウトを
+  大人っぽく、シンプルに仕上げました。
 
-* System dependencies
+# Requirement
 
-* Configuration
+  ruby 2.5.7
+  rails 5.2.4
 
-* Database creation
+# Installation
 
-* Database initialization
+  $ git clone https://github.com/tatuya5911/C-C.git
+  $ cd CandC
+  $ bundle install
+  $ rails db:migrate
+  $ rails s
 
-* How to run the test suite
+# Usage
 
-* Services (job queues, cache servers, search engines, etc.)
+  ・サイトの機能を十全に使用するため、新規登録を行います。
+  ・自分のおすすめのコーヒーを投稿し、共有します。
+  ・他ユーザーが投稿したコーヒーを参照し、自分に合うコーヒーを探します。
+  ・何か投稿者に質問があればコメントしよう！
+  ・投稿はお気に入りに追加することができ、ユーザーはフォローすることで簡単に投稿を閲覧することができます。
 
-* Deployment instructions
+# Note
 
-* ...
+  このサイトは今後新たな機能を追加していく予定です。
+
+# Author
+
+  越川
