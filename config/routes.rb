@@ -21,6 +21,5 @@ Rails.application.routes.draw do
   get 'thanks' => 'homes#thanks', as: "thanks"
   get 'browsing_histories/:user_id' => 'browsing_histories#index', as: "browsing_histories"
   get 'search' => 'posts#search', as: "search"
-  get '*path' => 'homes#top'
 
 end
