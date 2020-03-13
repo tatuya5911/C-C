@@ -13,8 +13,13 @@ class HomesController < ApplicationController
     @posts = Post.all
   end
 
-  def index
+  def latest
     @posts = Post.all.order(created_at: :desc).limit(30).page(params[:page]).per(10)
+  end
+
+  def index
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.page(params[:page]).per(10)
   end
 
 end

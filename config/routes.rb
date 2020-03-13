@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get 'ranking' => 'homes#rank', as: "rank"
-  resources :homes, only: [:index]
+  get 'latest' => 'homes#latest', as: "latest"
+  get 'homes/:user_id' => 'homes#index', as: "homes"
   get 'posts/category/:id' => 'posts#index', as: "posts_category"
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :like, :edit, :update] do
