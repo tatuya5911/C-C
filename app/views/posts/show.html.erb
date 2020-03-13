@@ -7,13 +7,16 @@
         <%= attachment_image_tag @post, :post_image, class: "post_img" %>
       </div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <p><strong>投稿者</strong>:
           <%= link_to user_path(@user.id), class: "link" do %>
             <%= @user.user_name %>
           <% end %>
         </p>
-        <p><strong>商品名</strong>: <%= @post.post_title %></p>
+        <p>
+          <strong>商品名</strong><br>
+          <%= @post.post_title %>
+        </p>
         <p><strong>カテゴリー</strong>:
           <%= link_to posts_category_path(@post.category.id), class: "link" do %>
             <%= @category.category_name %>
@@ -25,7 +28,10 @@
         <p><strong>苦味</strong>: <%= @post.bitterness %></p>
         <p>※５段階評価</p>
         <p><strong>評価</strong>: <%= @post.rate %>点</p>
-        <p><strong>説明</strong>: <%= @post.body %></p>
+        <p>
+          <strong>説明</strong> <br>
+          <%= @post.body %>
+        </p>
 
         <% if user_signed_in? %>
           <div id="likes_buttons_<%= @post.id %>">

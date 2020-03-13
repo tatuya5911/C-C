@@ -4,7 +4,7 @@
 
       <%= render 'homes/list' %>
 
-      <div class="col-md-5 list">
+      <div class="col-md-10 text-left list">
 
         <% @all_ranks.each.with_index(1) do |post, i| %>
           <h3>第<%= i %>位
@@ -12,7 +12,6 @@
             <%= post.post_title %></h3><br>
             <%= attachment_image_tag post, :post_image, size: "200x200", align: "left", class: "img item-img" %><br>
           <% end %>
-          <h4>タイトル:<%= post.post_title %></h4><br>
           <h4>カテゴリー:<%= post.category.category_name %></h4><br>
           <h4>評価:<%= post.rate %>点</h4><br clear="left">
         <% end %>
