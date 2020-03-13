@@ -9,7 +9,7 @@ class HomesController < ApplicationController
   end
 
   def rank
-    @all_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(50).pluck(:post_id).page(params[:page]).per(10))
+    @all_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(30).pluck(:post_id))
     @posts = Post.all
   end
 
