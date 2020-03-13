@@ -4,23 +4,10 @@
 
       <%= render 'homes/list' %>
 
-      <div class="col-md-5 list">
+      <div class="col-md-10 text-left list">
+        <h2><%= params[:search] %>(全<%= @posts.count %>件)</h2>
 
-        <% if params[:id] %>
-          <h2><%= @category.category_name %></h2>
-        <% else %>
-          <h2>全て</h2>
-        <% end %>
-
-        <% @posts.each do |post| %>
-          <div class="item">
-            <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :post_image, size: "200x200", align: "left", class: "img item-img" %><br>
-              <h3 class="link"><%= post.post_title %></h3>
-            <% end %>
-            <p><%= post.category.category_name %>|<%= post.rate %>点</p><br clear="left">
-          </div>
-        <% end %>
+        <%= render 'post', posts: @posts %>
 
         <%= paginate @posts %>
 
