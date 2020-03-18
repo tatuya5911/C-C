@@ -8,6 +8,7 @@ class RelationshipsController < ApplicationController
     if following.save
       redirect_to user
     else
+      flash[:alert] = "フォローに失敗しました。再度お願いします"
       redirect_to user
     end
   end
@@ -18,6 +19,7 @@ class RelationshipsController < ApplicationController
     if following.destroy
       redirect_to user
     else
+      flash[:alert] = "フォロー解除に失敗しました。再度お願いします"
       redirect_to user
     end
   end

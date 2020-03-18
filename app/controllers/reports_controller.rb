@@ -36,8 +36,10 @@ class ReportsController < ApplicationController
     if user_signed_in? && current_user.admin == true
       report = Report.find(params[:id])
       report.destroy!
+      flash[:success] = "削除しました。"
       redirect_to reports_path
     else
+      flash[:alert] = "削除に失敗しました。再度お願いします"
       redirect_to root_path
     end
   end
