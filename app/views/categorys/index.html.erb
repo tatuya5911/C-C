@@ -16,8 +16,10 @@
           <% end %>
 
           <%= form_with(model: @category, url: categorys_path, local: true) do |f| %>
-            <%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)" %>
-            <%= f.submit "追加" %>
+            <ul>
+              <li><%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)" %></li>
+              <li><%= f.submit "追加" %></li>
+            </ul>
           <% end %>
 
         <h2>カテゴリー一覧</h2>
