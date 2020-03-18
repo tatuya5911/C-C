@@ -19,13 +19,19 @@ class HomesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.page(params[:page]).per(1)
   end
 
   def policy
   end
 
   def privacy
+  end
+
+  def thanks
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       histories[0].destroy
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to posts_url
+    redirect_to posts_path
   end
 
   def search

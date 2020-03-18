@@ -8,9 +8,6 @@ class ReportsController < ApplicationController
     end
   end
 
-  def thanks
-  end
-
   def new
     @report = Report.new
     unless user_signed_in?
@@ -27,8 +24,12 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user_id = current_user.id
-    @report.save!
-    redirect_to thanks_path
+    if @report.save
+      redirect_to thanks_path
+    else
+      flash[:alert] = "通報に失敗しました。再度お願いします"
+      redirect_to posts_path
+    end
   end
 
   def destroy
