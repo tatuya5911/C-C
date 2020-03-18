@@ -38,8 +38,12 @@ class CategorysController < ApplicationController
 
   def destroy
     category = Category.find(params[:id])
-    category.destroy!
-    redirect_to categorys_path
+    if category.destroy
+      redirect_to categorys_path
+    else
+      flash[:alert] = "削除に失敗しました。再度お願いします"
+      redirect_to categorys_path
+    end
   end
 
   private

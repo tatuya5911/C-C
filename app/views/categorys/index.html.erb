@@ -5,6 +5,8 @@
       <div class="col-lg-6 text-center">
         <h2>カテゴリー作成</h2>
 
+          <%= flash[:alert] %>
+
           <% if @category.errors.any? %>
             <ul>
               <% @category.errors.full_messages.each do |msg| %>
