@@ -8,6 +8,7 @@
       </div>
 
       <div class="col-lg-4">
+        <%= flash[:alert] %>
         <p><strong>投稿者</strong>:
           <%= link_to user_path(@user.id), class: "link" do %>
             <%= @user.user_name %>

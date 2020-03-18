@@ -79,15 +79,22 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to post_path
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path
+    else
+      render :edit
+    end
   end
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy!
-    redirect_to posts_path
+    if post.destroy
+      redirect_to posts_path
+    else
+      flash[:alert] = "削除に失敗しました。再度お願いします"
+      redirect_to post_path(post.id)
+    end
   end
 
   private
