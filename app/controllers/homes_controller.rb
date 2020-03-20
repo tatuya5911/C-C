@@ -19,7 +19,7 @@ class HomesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.page(params[:page]).per(1)
+    @posts = @user.posts.page(params[:page]).per(30)
   end
 
   def policy
