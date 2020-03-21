@@ -1,25 +1,25 @@
 
-<div class="comtainer">
-  <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 text-center">
-      <h2>カテゴリー編集</h2>
+  <div class="comtainer">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 text-center">
+        <h2>カテゴリー編集</h2>
 
-        <% if @category.errors.any? %>
-          <ul>
-            <% @category.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        <% end %>
+          <% if @category.errors.any? %>
+            <ul>
+              <% @category.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
 
-        <%= form_with(model: @category, url: category_path, local: true) do |f| %>
-          <ul>
-            <li>新しいカテゴリー名</li>
-            <li><%= f.text_field :category_name, value: "", placeholder:"カテゴリー名" %></li>
-            <li><%= f.submit "変更を保存する" %></li>
-          </ul>
-        <% end %>
+          <%= form_with(model: @category, url: category_path, local: true) do |f| %>
+            <ul>
+              <li>新しいカテゴリー名</li>
+              <li><%= f.text_field :category_name, value: "", placeholder:"カテゴリー名" %></li>
+              <li><%= f.submit "変更を保存する" %></li>
+            </ul>
+          <% end %>
+      </div>
     </div>
   </div>
-</div>

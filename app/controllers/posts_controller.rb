@@ -26,8 +26,8 @@ class PostsController < ApplicationController
       new_history.user_id = current_user.id
     end
 
-    if user_signed_in? && current_user.browsing_histories.exists?(post_id: "#{params[:id]}")
-      old_history = current_user.browsing_histories.find_by(post_id: "#{params[:id]}")
+    if user_signed_in? && current_user.browsing_histories.exists?(post_id: params[:id])
+      old_history = current_user.browsing_histories.find_by(post_id: params[:id])
       old_history.destroy
     end
 
