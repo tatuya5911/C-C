@@ -16,9 +16,9 @@
           <%= form_with(model: @post, url: post_path, local: true) do |f| %>
             <ul>
               <li>商品画像</li>
-              <li><%= f.attachment_field :post_image, placeholder: "画像選択" %></li>
+              <li><%= f.attachment_field :post_image %></li>
               <li>商品名(30文字以内)</li>
-              <li><%= f.text_field :post_title, class: "post-title text-center", placeholder: "商品名" %></li>
+              <li><%= f.text_field :post_title, class: "post-title" %></li>
               <li>商品カテゴリー</li>
               <li><%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %></li>
               <li>香り</li>
@@ -32,7 +32,7 @@
               <li>商品評価(英数字のみ)</li>
               <li><%= f.text_field :rate, class: "text-center", placeholder: "0〜100" %></li>
               <li>商品説明(おすすめポイントなど)(200字以内)</li>
-              <li><%= f.text_area :body, class: "comment text-center", placeholder: "商品内容" %></li>
+              <li><%= f.text_area :body, class: "comment" %></li>
               <li>※すべての項目が必須項目です。</li>
               <%= f.submit "投稿する" %>
             </ul>
