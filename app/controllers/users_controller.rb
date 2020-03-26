@@ -30,6 +30,8 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       flash[:alert] = "更新に失敗しました。再度お願いいたします。"
+      render :edit
+    end
   end
 
   def following
