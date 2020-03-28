@@ -12,6 +12,7 @@ class CategorysController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
+      flash[:success] = "カテゴリーを作成しました。"
       redirect_to categorys_path
     else
       @categorys = Category.all
@@ -30,6 +31,7 @@ class CategorysController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
+      flash[:success] = "カテゴリーを編集しました。"
       redirect_to categorys_path
     else
       render :edit
@@ -39,6 +41,7 @@ class CategorysController < ApplicationController
   def destroy
     category = Category.find(params[:id])
     if category.destroy
+      flash[:success] = "削除しました。"
       redirect_to categorys_path
     else
       flash[:alert] = "削除に失敗しました。再度お願いします"
