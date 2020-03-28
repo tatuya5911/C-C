@@ -14,6 +14,7 @@ class PostReviewsController < ApplicationController
     @post_review = current_user.post_reviews.new(post_review_params)
     @post_review.post_id = @post.id
     if @post_review.save
+      flash[:success] = "コメントを投稿しました。"
       redirect_to post_path(@post.id)
     else
       render :new
