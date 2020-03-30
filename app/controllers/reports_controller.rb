@@ -28,19 +28,18 @@ class ReportsController < ApplicationController
       redirect_to thanks_path
     else
       flash[:alert] = "通報に失敗しました。再度お願いします"
-      redirect_to posts_path
+      redirect_to post_path(@report.post.id)
     end
   end
 
   def destroy
-    if user_signed_in? && current_user.admin == true
-      report = Report.find(params[:id])
-      report.destroy!
+    report = Report.find(params[:id])
+    if report.destroy
       flash[:success] = "削除しました。"
       redirect_to reports_path
     else
       flash[:alert] = "削除に失敗しました。再度お願いします"
-      redirect_to root_path
+      redirect_to reports_path
     end
   end
 
