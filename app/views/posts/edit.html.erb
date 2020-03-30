@@ -7,6 +7,7 @@
 
           <% if @post.errors.any? %>
             <ul>
+              <h4><%= flash[:alert] %></h4>
               <% @post.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>
@@ -19,17 +20,12 @@
               <li><%= f.attachment_field :post_image %></li>
               <li>商品名(30文字以内)</li>
               <li><%= f.text_field :post_title, class: "post-title" %></li>
-              <li>商品カテゴリー</li>
-              <li><%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %></li>
-              <li>香り</li>
-              <li><%= f.select :aroma, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"香り" %></li>
-              <li>酸味</li>
-              <li><%= f.select :acidity, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"酸味" %></li>
-              <li>コク</li>
-              <li><%= f.select :rich, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"コク" %></li>
-              <li>苦味</li>
-              <li><%= f.select :bitterness, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"苦味" %></li>
-              <li>商品評価(英数字のみ)</li>
+              <li>商品カテゴリー <%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %></li>
+              <li>香り <%= f.select :aroma, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"香り" %></li>
+              <li>酸味 <%= f.select :acidity, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"酸味" %></li>
+              <li>コク <%= f.select :rich, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"コク" %></li>
+              <li>苦味 <%= f.select :bitterness, [["1", 1],["2", 2],["3", 3],["4",4],["5",5]], prompt:"苦味" %></li>
+              <li>商品評価(英数字0~100まで)</li>
               <li><%= f.text_field :rate, class: "text-center", placeholder: "0〜100" %></li>
               <li>商品説明(おすすめポイントなど)(200字以内)</li>
               <li><%= f.text_area :body, class: "comment" %></li>

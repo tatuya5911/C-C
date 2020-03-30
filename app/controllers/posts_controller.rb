@@ -61,9 +61,10 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      flash[:success] = "投稿しました。"
+      flash[:success] = "レビューを投稿しました。"
       redirect_to post_path(@post.id)
     else
+      flash[:alert] = "投稿に失敗しました。下記を修正し、再度お願いいたします。"
       render :new
     end
 
@@ -85,6 +86,7 @@ class PostsController < ApplicationController
       flash[:success] = "編集しました。"
       redirect_to post_path
     else
+      flash[:alert] = "編集に失敗しました。下記を修正し、再度お願いいたします。"
       render :edit
     end
   end
@@ -92,7 +94,7 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     if post.destroy
-      flash[:success] = "削除しました。"
+      flash[:success] = "レビューを削除しました。"
       redirect_to posts_path
     else
       flash[:alert] = "削除に失敗しました。再度お願いします。"
