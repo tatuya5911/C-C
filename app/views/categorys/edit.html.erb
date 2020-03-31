@@ -7,6 +7,7 @@
 
           <% if @category.errors.any? %>
             <ul>
+              <h4><%= flash[:alert] %></h4>
               <% @category.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>
@@ -14,11 +15,8 @@
           <% end %>
 
           <%= form_with(model: @category, url: category_path, local: true) do |f| %>
-            <ul>
-              <li>新しいカテゴリー名</li>
-              <li><%= f.text_field :category_name, value: "", placeholder:"カテゴリー名" %></li>
-              <li><%= f.submit "変更を保存する" %></li>
-            </ul>
+            <p>新しいカテゴリー名: <%= f.text_field :category_name, value: "", placeholder:"カテゴリー名" %><p>
+            <%= f.submit "変更を保存する" %>
           <% end %>
       </div>
     </div>

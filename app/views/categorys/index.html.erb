@@ -5,10 +5,11 @@
       <div class="col-lg-6 text-center">
         <h2>カテゴリー作成</h2>
 
-          <%= flash[:alert] %>
+          <h4><%= flash[:success] %></h4>
 
           <% if @category.errors.any? %>
             <ul>
+              <h4><%= flash[:alert] %></h4>
               <% @category.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>
@@ -16,10 +17,8 @@
           <% end %>
 
           <%= form_with(model: @category, url: categorys_path, local: true) do |f| %>
-            <ul>
-              <li><%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)" %></li>
-              <li><%= f.submit "追加" %></li>
-            </ul>
+            <%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)" %>
+            <%= f.submit "追加" %>
           <% end %>
 
         <h2>カテゴリー一覧</h2>
