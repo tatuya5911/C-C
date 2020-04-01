@@ -13,15 +13,11 @@
               <h3 class="link"><%= history.post.post_title %></h3>
             <% end %>
             <p><%= history.post.category.category_name %>|<%= history.post.rate %>点</p><br>
-            <p>投稿者:
-              <%= link_to user_path(history.id), class: "link" do %>
-                <%= history.user.user_name %>
-              <% end %>
-            </p><br clear="left">
+            <p>投稿者:<%= history.user.user_name %></p><br clear="left">
           </div>
         <% end %>
 
-        <%= paginate @histories, class: "paginate" %>
+        <%= paginate @histories %>
 
       </div>
     </div>

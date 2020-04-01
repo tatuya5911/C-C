@@ -52,6 +52,11 @@ td {
   color: #000;
 }
 
+.post_img {
+  width: 270px;
+  height: 330px;
+}
+
 .center {
   text-align: center;
 }
@@ -60,7 +65,9 @@ td {
   font-size: 60px;
   color: #000;
   font-family: cursive;
-  margin-left: 650px;
+  display: block;
+  margin: 0 auto;
+  width: 130px;
 }
 
 .title:hover {
@@ -142,4 +149,19 @@ input[type="file"] {
 
 .link-to-post-detail:hover {
   text-decoration: none;
+  display: inline-block
+}
+
+.pagination>li>a {
+  padding-left: 10px;
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+}
+
+.pagination>li>a:hover {
+  opacity: 0.7;
 }
