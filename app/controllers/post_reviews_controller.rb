@@ -25,6 +25,7 @@ class PostReviewsController < ApplicationController
   def destroy
     post = Post.find(params[:post_id])
     @post_review = current_user.post_reviews.find_by(post_id: post.id)
+    binding.pry
     @post_review.destroy!
   end
 

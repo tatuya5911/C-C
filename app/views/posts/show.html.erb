@@ -59,12 +59,10 @@
   </div>
 
   <div class="center">
-    <ul>
     <% @post_reviews.each do |post_review| %>
       <div id="comments_buttons_<%= post_review.id %>">
         <%= render 'post_review', post_review:post_review, post:@post %>
       </div>
     <% end %>
-    </ul>
     <%= paginate @post_reviews %>
   </div>
