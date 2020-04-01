@@ -26,8 +26,8 @@ class PostsController < ApplicationController
       new_history.user_id = current_user.id
     end
 
-    if user_signed_in? && current_user.browsing_histories.exists?(post_id: "#{params[:id]}")
-      old_history = current_user.browsing_histories.find_by(post_id: "#{params[:id]}")
+    if user_signed_in? && current_user.browsing_histories.exists?(post_id: params[:id])
+      old_history = current_user.browsing_histories.find_by(post_id: params[:id])
       old_history.destroy
     end
 
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       histories[0].destroy
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to posts_url
+    redirect_to posts_path
   end
 
   def search
@@ -61,8 +61,10 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
+      flash[:success] = "レビューを投稿しました。"
       redirect_to post_path(@post.id)
     else
+      flash[:alert] = "投稿に失敗しました。下記を修正し、再度お願いいたします。"
       render :new
     end
 
@@ -79,15 +81,25 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to post_path
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:success] = "編集しました。"
+      redirect_to post_path
+    else
+      flash[:alert] = "編集に失敗しました。下記を修正し、再度お願いいたします。"
+      render :edit
+    end
   end
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy!
-    redirect_to posts_path
+    if post.destroy
+      flash[:success] = "レビューを削除しました。"
+      redirect_to posts_path
+    else
+      flash[:alert] = "削除に失敗しました。再度お願いします。"
+      redirect_to post_path(post.id)
+    end
   end
 
   private

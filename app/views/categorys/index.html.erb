@@ -5,8 +5,11 @@
       <div class="col-lg-6 text-center">
         <h2>カテゴリー作成</h2>
 
+          <h4><%= flash[:success] %></h4>
+
           <% if @category.errors.any? %>
             <ul>
+              <h4><%= flash[:alert] %></h4>
               <% @category.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>

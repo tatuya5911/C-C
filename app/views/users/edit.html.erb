@@ -8,14 +8,16 @@
 
           <% if @user.errors.any? %>
             <ul>
+              <h4><%= flash[:alert] %></h4>
               <% @user.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>
             </ul>
           <% end %>
-          <%= form_with(model: @user, url: user_path) do |f| %>
-            <p>ニックネーム: <%= f.text_field :user_name %></p><br>
-            <p>メールアドレス: <%= f.email_field :email %></p><br>
+          
+          <%= form_with(model: @user, url: user_path, local: true) do |f| %>
+            <p>ニックネーム <%= f.text_field :user_name %></p><br>
+            <p>メールアドレス <%= f.email_field :email %></p><br>
             <%= f.submit "変更する" %>
           <% end %>
 

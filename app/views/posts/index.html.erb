@@ -6,6 +6,8 @@
 
       <div class="col-md-10 text-left list">
 
+        <h4><%= flash[:success] %></h4>
+
         <% if params[:id] %>
           <h2><%= @category.category_name %>(全<%= @posts.count %>件)</h2>
         <% else %>

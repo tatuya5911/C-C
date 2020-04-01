@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def like
     user = User.find(params[:user_id])
-    @likes = user.likes.page(params[:page]).per(10)
+    @likes = user.likes.page(params[:page]).per(30)
   end
 
   def edit
@@ -25,8 +25,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      flash[:alert] = "更新に失敗しました。下記を修正し、再度お願いいたします。"
+      render :edit
+    end
   end
 
   def following
@@ -40,7 +44,6 @@ class UsersController < ApplicationController
     @users = @user.followers.page(params[:page]).per(30)
     render 'follower'
   end
-
 
   private
 
