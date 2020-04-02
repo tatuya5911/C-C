@@ -14,8 +14,8 @@
         <% end %>
 
         <%= form_with(model: [@post, @post_review], local: true) do |f| %>
-            <%= f.text_field :title, class: "post-title text-center", placeholder: "タイトル(35字以内)" %><br>
-            <%= f.text_area :comment, class: "comment text-center",placeholder: "この投稿にコメントをしよう！(300字以内)" %><br>
+            <%= f.text_field :title, class: "post-title", placeholder: "タイトル(35字以内)" %><br>
+            <%= f.text_area :comment, class: "comment",placeholder: "この投稿にコメントをしよう！(300字以内)" %><br>
             <%= f.submit "送信する", data: {disable_with: "submitting..."} %>
         <% end %>
 
