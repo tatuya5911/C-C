@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id', :dependent => :destroy
   has_many :followers, through: :reverse_of_relationships, source: :user, :dependent => :destroy
   has_many :posts, dependent: :destroy
-  has_many :post_reviews, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
   has_many :reports, :dependent => :destroy

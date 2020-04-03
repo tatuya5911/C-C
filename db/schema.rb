@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_064222) do
+ActiveRecord::Schema.define(version: 2020_04_03_154054) do
 
   create_table "browsing_histories", force: :cascade do |t|
     t.integer "user_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_064222) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "post_reviews", force: :cascade do |t|
+  create_table "post_comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
     t.string "title"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_064222) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer "post_review_id"
+    t.integer "post_comment_id"
     t.integer "user_id"
     t.integer "body"
     t.datetime "created_at", null: false
