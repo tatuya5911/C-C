@@ -12,6 +12,7 @@
                   <%= link_to user_path(user.id), class: "link" do %>
                     <%= user.user_name %>
                   <% end %>
+                  <%= link_to "[ユーザーを強制退会させる]", user_path(user.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "link" %>
                 </td>
               </tr>
             <% end %>

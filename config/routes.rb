@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'browsing_histories/:user_id' => 'browsing_histories#index', as: "browsing_histories"
   get 'search' => 'posts#search', as: "search"
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
-  resources :users, only: [:index, :show, :like, :edit, :update] do
+  resources :users, only: [:index, :show, :like, :edit, :update ,:destroy] do
     get :following, :followers, :like
   end
   resources :relationships, only: [:create, :destroy]

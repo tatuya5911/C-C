@@ -7,15 +7,15 @@ class User < ApplicationRecord
   validates :user_name, presence: true, length: {maximum: 15}
   validates :email , presence: true
 
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-  has_many :followers, through: :reverse_of_relationships, source: :user
+  has_many :relationships, :dependent => :destroy
+  has_many :followings, through: :relationships, source: :follow, :dependent => :destroy
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id', :dependent => :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :user, :dependent => :destroy
   has_many :posts, dependent: :destroy
   has_many :post_reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
-  has_many :reports
+  has_many :reports, :dependent => :destroy
   has_many :browsing_histories, dependent: :destroy
 
   def follow(other_user)

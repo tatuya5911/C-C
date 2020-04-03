@@ -33,6 +33,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      flash[:success] = "指定したユーザーを強制退会させました。"
+      redirect_to users_path
+    else
+      flash[:alert] = "指定したユーザーの強制退会に失敗しました。再度お願いいたします。"
+      render :index
+    end
+  end
+
   def following
     @user  = User.find(params[:user_id])
     @users = @user.followings.page(params[:page]).per(30)
