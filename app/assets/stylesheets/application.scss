@@ -101,6 +101,12 @@ td {
   background-color: #D3D3D3;
 }
 
+.btn-danger {
+  margin-top: 0px;
+  margin-left: 10px;
+  border: 0px;
+}
+
 .content {
   width: 180px;
   margin-top: 50px;
@@ -109,8 +115,12 @@ td {
   font-family: serif;
 }
 
-.link{
+.link {
   color: #000;
+}
+
+.destroy-link {
+  background-color: #FF3333;
 }
 
 .img:hover {
