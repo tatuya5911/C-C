@@ -5,7 +5,7 @@
         <td>
           <div>
             <%= link_to user_path(post_comment.user.id), class: "link" do %>
-              投稿者: <%= post_comment.user.user_name %>
+              <%= post_comment.user.user_name %>
             <% end %>
             <span class="comment-link">
               <% if user_signed_in? && post_comment.user == current_user %>
@@ -16,6 +16,9 @@
                 <%= link_to "通報する", new_report_path(post_comment_id: post_comment.id), class: "link" %><br>
               <% end %>
             </span>
+          </div>
+          <div class="time">
+            <%= post_comment.created_at.to_s(:datetime_jp) %>にコメント済み
           </div>
           <div class="comment-title center">
             <strong><%= post_comment.title %></strong>
