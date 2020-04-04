@@ -12,8 +12,9 @@
             <%= post.post_title %></h3><br>
             <%= attachment_image_tag post, :post_image, size: "200x200", align: "left", class: "img item-img" %><br>
           <% end %>
-          <h4>カテゴリー:<%= post.category.category_name %></h4><br>
-          <h4>評価:<%= post.rate %>点</h4><br clear="left">
+          <h4>カテゴリー: <%= post.category.category_name %></h4><br>
+          <h4>評価: <%= post.rate %>点</h4><br>
+          <h4>お気に入り数: <%= post.likes.count %></h4><br clear="left">
         <% end %>
 
       </div>
