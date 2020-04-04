@@ -1,4 +1,4 @@
-class PostReview < ApplicationRecord
+class PostComment < ApplicationRecord
 
   has_many :reports, dependent: :destroy
 

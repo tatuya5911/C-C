@@ -15,13 +15,13 @@
                     <% end %>
                   </td>
                   <td>レビュー作成者:
-                    <%= link_to user_path(report.post_review.user.id), class: "link" do %>
-                      <%= report.post_review.user.user_name %>
+                    <%= link_to user_path(report.post_comment.user.id), class: "link" do %>
+                      <%= report.post_comment.user.user_name %>
                     <% end %>
                   </td>
                   <td>タイトル:
-                    <%= link_to post_path(report.post_review.post.id), class: "link" do %>
-                      <%= report.post_review.title %>
+                    <%= link_to post_path(report.post_comment.post.id), class: "link" do %>
+                      <%= report.post_comment.title %>
                     <% end %>
                   </td>
                   <td>通報内容:<%= report.body %></td>

@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
 
   def index
     if user_signed_in? && current_user.admin == true
-      @reports = Report.all.order(:post_id, :post_review_id).page(params[:page]).per(30)
+      @reports = Report.all.order(:post_id, :post_comment_id).page(params[:page]).per(30)
     else
       redirect_to root_path
     end
@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
     if params[:post_id].present?
       @post = Post.find(params[:post_id])
     else
-      @post_review = PostReview.find(params[:post_review_id])
+      @post_comment = PostComment.find(params[:post_comment_id])
     end
   end
 
@@ -46,7 +46,7 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:user_id, :post_review_id, :post_id, :body)
+    params.require(:report).permit(:user_id, :post_comment_id, :post_id, :body)
   end
 
 end

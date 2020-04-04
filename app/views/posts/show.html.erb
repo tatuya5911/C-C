@@ -43,7 +43,7 @@
           <div id="likes_buttons_<%= @post.id %>">
             <%= render 'like', post: @post %>
           </div>
-          <%= link_to "コメントする", new_post_post_review_path(@post.id), class: "link" %> |
+          <%= link_to "コメントする", new_post_post_comment_path(@post.id), class: "link" %> |
         <% end %>
 
         <% if user_signed_in? && current_user == @post.user %>
@@ -60,11 +60,11 @@
 
   <div class="center">
     <ul>
-    <% @post_reviews.each do |post_review| %>
-      <div id="comments_buttons_<%= post_review.id %>">
-        <%= render 'post_review', post_review:post_review, post:@post %>
+    <% @post_comments.each do |post_comment| %>
+      <div id="comments_buttons_<%= post_comment.id %>">
+        <%= render 'post_comment', post_comment:post_comment, post:@post %>
       </div>
     <% end %>
     </ul>
-    <%= paginate @post_reviews %>
+    <%= paginate @post_comments %>
   </div>

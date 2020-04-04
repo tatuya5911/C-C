@@ -10,8 +10,8 @@
           <%= f.label :暴力的または不快な内容 %><br>
           <%= f.radio_button :body, :差別的または攻撃的な内容 %>
           <%= f.label :差別的または攻撃的な内容 %><br>
-          <% if params[:post_review_id] %>
-            <%= f.hidden_field :post_review_id, value: @post_review.id %>
+          <% if params[:post_comment_id] %>
+            <%= f.hidden_field :post_comment_id, value: @post_comment.id %>
           <% else %>
             <%= f.hidden_field :post_id, value: @post.id %>
           <% end %>
