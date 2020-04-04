@@ -1,9 +1,9 @@
-class PostReviewsController < ApplicationController
+class PostCommentsController < ApplicationController
 
   def new
     if user_signed_in?
       @post = Post.find(params[:post_id])
-      @post_review = PostReview.new
+      @post_comment = PostComment.new
     else
       redirect_to root_path
     end
@@ -11,9 +11,9 @@ class PostReviewsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post_review = current_user.post_reviews.new(post_review_params)
-    @post_review.post_id = @post.id
-    if @post_review.save
+    @post_comment = current_user.post_comments.new(post_comment_params)
+    @post_comment.post_id = @post.id
+    if @post_comment.save
       flash[:success] = "コメントを投稿しました。"
       redirect_to post_path(@post.id)
     else
@@ -23,14 +23,14 @@ class PostReviewsController < ApplicationController
   end
 
   def destroy
-    @post_review = current_user.post_reviews.find_by(id: params[:post_review_id], post_id: params[:post_id])
-    @post_review.destroy!
+    @post_comment = current_user.post_comments.find_by(id: params[:post_comment_id], post_id: params[:post_id])
+    @post_comment.destroy!
   end
 
   private
 
-  def post_review_params
-    params.require(:post_review).permit(:user_id, :post_id, :title, :comment)
+  def post_comment_params
+    params.require(:post_comment).permit(:user_id, :post_id, :title, :comment)
   end
 
 end

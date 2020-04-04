@@ -1,0 +1,15 @@
+
+  <li>
+    <%= link_to user_path(post_comment.user.id), class: "link comment" do %>
+      投稿者: <%= post_comment.user.user_name %>
+    <% end %>
+    <% if user_signed_in? && post_comment.user == current_user %>
+      <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment_id: post_comment.id), class: "link", method: :delete, remote: true %><br>
+    <% elsif user_signed_in? && current_user.admin == true %>
+      <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment_id: post_comment.id), class: "link", method: :delete, remote: true %><br>
+    <% elsif user_signed_in? %>
+      <%= link_to "通報する", new_report_path(post_comment_id: post_comment.id), class: "link" %><br>
+    <% end %>
+    <p>タイトル: <%= post_comment.title %></p><br>
+    <p>コメント: <%= post_comment.comment %></p><br>
+  </li>

@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   get 'browsing_histories/:user_id' => 'browsing_histories#index', as: "browsing_histories"
   get 'search' => 'posts#search', as: "search"
   resources :categorys, only: [:index, :create, :edit, :update, :destroy]
-  resources :users, only: [:index, :show, :like, :edit, :update] do
+  resources :users, only: [:index, :show, :like, :edit, :update ,:destroy] do
     get :following, :followers, :like
   end
   resources :relationships, only: [:create, :destroy]
   resources :posts, only: [:index, :show, :search, :new, :create, :edit, :update, :destroy] do
-    resources :post_reviews, only: [:new, :create, :destroy]
+    resources :post_comments, only: [:new, :create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
   resources :reports, only: [:index, :new, :create, :destroy]

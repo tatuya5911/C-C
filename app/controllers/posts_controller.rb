@@ -17,8 +17,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @category = @post.category
     @user = @post.user
-    @post_review = PostReview.new
-    @post_reviews = @post.post_reviews.page(params[:page]).per(10)
+    @post_comment = PostComment.new
+    @post_comments = @post.post_comments.page(params[:page]).per(10)
     @like = Like.new
 
     if user_signed_in?
