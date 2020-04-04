@@ -17,7 +17,7 @@ class PostCommentsController < ApplicationController
       flash[:success] = "コメントを投稿しました。"
       redirect_to post_path(@post.id)
     else
-      flash[:alert] = "コメントに失敗しました。下記を修正し、再度お願いいたします。"
+      flash.now[:alert] = "コメントに失敗しました。下記を修正し、再度お願いいたします。"
       render :new
     end
   end

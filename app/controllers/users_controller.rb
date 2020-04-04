@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
-      flash[:alert] = "更新に失敗しました。下記を修正し、再度お願いいたします。"
+      flash.now[:alert] = "更新に失敗しました。下記を修正し、再度お願いいたします。"
       render :edit
     end
   end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       flash[:success] = "指定したユーザーを強制退会させました。"
       redirect_to users_path
     else
-      flash[:alert] = "指定したユーザーの強制退会に失敗しました。再度お願いいたします。"
+      flash.now[:alert] = "指定したユーザーの強制退会に失敗しました。再度お願いいたします。"
       render :index
     end
   end
