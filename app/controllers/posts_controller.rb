@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @category = @post.category
     @user = @post.user
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments.page(params[:page]).per(10)
+    @post_comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
     @like = Like.new
 
     if user_signed_in?
