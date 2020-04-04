@@ -111,10 +111,15 @@ td {
   background-color: #D3D3D3;
 }
 
-.btn-danger {
+.danger {
   margin-top: 0px;
   margin-left: 10px;
   border: 0px;
+}
+
+.danger:hover {
+  background-color: #F00;
+  color: #FFF;
 }
 
 .content {

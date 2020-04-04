@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     if user_signed_in? && current_user.admin == true
-      @users = User.all.page(params[:page]).per(30)
+      @users = User.where(admin: 'false').page(params[:page]).per(30)
     else
       redirect_to root_path
     end
