@@ -218,3 +218,8 @@ input[type="file"] {
 .category-form {
   width: 230px;
 }
+
+@media screen and (max-width:425px) {
+.left {
+  float: none;
+}}
