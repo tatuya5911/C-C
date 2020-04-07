@@ -21,10 +21,10 @@ class Post < ApplicationRecord
   validates :body, presence: true, length: {maximum: 200}
 
   def self.search(search)
-    if search
+    if search.present?
       Post.where('post_title LIKE ?', "%#{search}%")
     else
-      Post.all
+      Post.none
     end
   end
 

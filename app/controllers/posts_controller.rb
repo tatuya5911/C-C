@@ -46,6 +46,11 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:search]).page(params[:page]).per(10)
+
+    if params[:search].empty?
+      redirect_to root_path
+    end
+
     if @posts.count == 0
       flash.now[:notice] = "ヒットする投稿がありませんでした。"
     end
