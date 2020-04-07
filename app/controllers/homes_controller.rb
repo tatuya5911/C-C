@@ -1,7 +1,9 @@
 class HomesController < ApplicationController
 
   def top
-    @user = current_user
+    if user_signed_in?
+      @user = current_user
+    end
     @posts = Post.all
     @categorys = Category.all
     @fresh_posts = Post.all.order(created_at: :desc).limit(10)
