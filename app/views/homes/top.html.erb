@@ -99,7 +99,8 @@
             <% end %>
           </ul>
           <ul>
-            カテゴリー: <li class="link-list">
+            <li class="link-list">
+              カテゴリー: 
               <% @categorys.each do |category| %>
                 <%= link_to posts_category_path(category.id), class: "link" do %>
                   <%= category.category_name %> |
