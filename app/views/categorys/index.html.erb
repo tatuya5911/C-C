@@ -17,19 +17,25 @@
           <% end %>
 
           <%= form_with(model: @category, url: categorys_path, local: true) do |f| %>
-            <%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)" %>
+            <%= f.text_field :category_name, placeholder:"カテゴリー名(15字以内)", class: "category-form" %>
             <%= f.submit "追加" %>
           <% end %>
 
         <h2>カテゴリー一覧</h2>
 
-          <% @categorys.each do |category| %>
-            <ul>
-              <li class="link-list"><%= category.category_name %></li>
-              | <%= link_to "編集する", edit_category_path(category.id), class: "link" %>
-              | <%= link_to "削除する", category_path(category.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "link" %>
-            </ul>
-          <% end %>
+        <table class="table table-bordered">
+          <tbody>
+            <% @categorys.each do |category| %>
+              <tr>
+                <td>
+                  <strong><%= category.category_name %></strong>
+                  <%= link_to "編集する", edit_category_path(category.id), class: "btn active" %>
+                  <%= link_to "削除する", category_path(category.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn active" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
       </div>
     </div>

@@ -10,7 +10,7 @@
 		  <div class="col-lg-8">
         <div class="center">
           <h2>
-            コーヒーで幸せな時をあなたに。
+            コーヒーで幸せな時をあなたに
           </h2>
           <p>
             世界には、200種類以上のコーヒーの銘柄があるとされてますが、一つ一つ酸味や苦味などに違いがあり、コーヒーと一括りにされていますが、全く味が異なるコーヒーもあります。
@@ -99,7 +99,8 @@
             <% end %>
           </ul>
           <ul>
-            カテゴリー: <li class="link-list">
+            <li class="link-list">
+              カテゴリー: 
               <% @categorys.each do |category| %>
                 <%= link_to posts_category_path(category.id), class: "link" do %>
                   <%= category.category_name %> |

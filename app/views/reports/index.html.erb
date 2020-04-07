@@ -4,47 +4,59 @@
       <div class="col-lg-12 text-center">
         <h4><%= flash[:alert] %></h4>
         <h4><%= flash[:success] %></h4>
-        <table class="table">
+        <table class="table table-bordered">
           <tbody>
             <% @reports.each do |report| %>
               <% if report.post_id == nil %>
                 <tr>
-                  <td>報告者:
+                  <td>
+                    <span class="left">報告者:<span>
                     <%= link_to user_path(report.user.id), class: "link" do %>
                       <%= report.user.user_name %>
                     <% end %>
                   </td>
-                  <td>レビュー作成者:
+                  <td>
+                    <span class="left">コメント作成者:<span>
                     <%= link_to user_path(report.post_comment.user.id), class: "link" do %>
                       <%= report.post_comment.user.user_name %>
                     <% end %>
                   </td>
-                  <td>タイトル:
+                  <td>
+                    <span class="left">タイトル:<span>
                     <%= link_to post_path(report.post_comment.post.id), class: "link" do %>
                       <%= report.post_comment.title %>
                     <% end %>
                   </td>
-                  <td>通報内容:<%= report.body %></td>
+                  <td>
+                    <span class="left">通報内容:<span>
+                    <%= report.body %>
+                  </td>
                   <td><%= link_to "削除する", report_path(report.id), class: "link", method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
                 </tr>
               <% else %>
                 <tr>
-                  <td>報告者:
+                  <td>
+                    <span class="left">報告者:<span>
                     <%= link_to user_path(report.user.id), class: "link" do %>
                       <%= report.user.user_name %>
                     <% end %>
                   </td>
-                  <td>投稿作成者:
+                  <td>
+                    <span class="left">投稿作成者:<span>
                     <%= link_to user_path(report.post.user.id), class: "link" do %>
                       <%= report.post.user.user_name %>
                     <% end %>
                   </td>
-                  <td>タイトル:
+                  <td>
+                    <span class="left">商品名:<span>
                     <%= link_to post_path(report.post.id), class: "link" do %>
                       <%= report.post.post_title %>
                     <% end %>
                   </td>
-                  <td>通報内容:<%= report.body %></td>
+                  <td>
+                    <span class="left">通報内容:<span>
+                    <%= report.body %>
+                  </td>
                   <td><%= link_to "削除する", report_path(report.id), class: "link", method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
                 </tr>
               <% end %>

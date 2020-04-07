@@ -4,8 +4,10 @@
 
       <%= render 'homes/list' %>
 
-      <div class="col-md-10 text-left list">
+      <div class="col-md-9 text-left list">
         <h2><%= params[:search] %>(全<%= @posts.count %>件)</h2>
+
+        <h3><%= flash[:notice] %></h3>
 
         <%= render 'post', posts: @posts %>
 

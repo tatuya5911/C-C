@@ -28,6 +28,7 @@
             <%= @category.category_name %>
           <% end %>
         </p>
+        <p><strong>投稿日</strong>: <%= @post.created_at.to_s(:datetime_jp) %></p>
         <p><strong>香り</strong>: <%= @post.aroma %></p>
         <p><strong>酸味</strong>: <%= @post.acidity %></p>
         <p><strong>コク</strong>: <%= @post.rich %></p>
@@ -58,13 +59,14 @@
     </div>
   </div>
 
-  <div class="center">
-    <ul>
+  <div class="comments">
     <% @post_comments.each do |post_comment| %>
       <div id="comments_buttons_<%= post_comment.id %>">
         <%= render 'post_comment', post_comment:post_comment, post:@post %>
       </div>
     <% end %>
-    </ul>
+  </div>
+
+  <div class="center">
     <%= paginate @post_comments %>
   </div>

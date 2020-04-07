@@ -4,7 +4,7 @@
       models:
         post: "投稿"
         user: "ユーザー"
-        post_review: "コメント"
+        post_comment: "コメント"
         category: "カテゴリー"
       attributes:
         post:
@@ -23,7 +23,7 @@
           password: "パスワード"
           user_name: "ニックネーム"
           password_confirmation: "パスワード（確認用）"
-        post_review:
+        post_comment:
           title: "タイトル"
           comment: "コメント"
         category:
