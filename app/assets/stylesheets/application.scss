@@ -224,6 +224,10 @@ h2 {
   font-size: 25px;
 }
 
+select {
+  background-color: #F000;
+}
+
 // top.html
 .content {
   margin-top: 0px;
@@ -235,8 +239,13 @@ h2 {
   margin-bottom: 5px;
 }
 
+// category
 .category-btn {
   background-color: #D3D3D3;
+}
+
+.select-box {
+  background-color: inherit;
 }
 
 // post.search
@@ -246,6 +255,16 @@ h2 {
 
 .button1 {
   width: 50px;
+}
+
+.like_btn {
+  background-color: inherit;
+}
+
+.comments {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 }
