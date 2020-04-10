@@ -1,5 +1,4 @@
 
-
   <div class="center">
     <p>自分にあったコーヒーを探そう！</p>
     <%= render 'posts/search' %>
@@ -100,7 +99,7 @@
           </ul>
           <ul>
             <li class="link-list">
-              カテゴリー: 
+              カテゴリー:
               <% @categorys.each do |category| %>
                 <%= link_to posts_category_path(category.id), class: "link" do %>
                   <%= category.category_name %> |

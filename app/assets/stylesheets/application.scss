@@ -220,6 +220,28 @@ input[type="file"] {
 }
 
 @media screen and (max-width:425px) {
-.left {
-  float: none;
-}}
+h2 {
+  font-size: 25px;
+}
+
+// top.html
+.content {
+  margin-top: 0px;
+  margin-right: 0px;
+}
+
+// user/new
+.register-form {
+  margin-bottom: 5px;
+}
+
+// post.search
+.input-mysize {
+  width: 300px;
+}
+
+.button1 {
+  width: 50px;
+}
+
+}
