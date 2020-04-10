@@ -16,7 +16,7 @@
 
           <%= form_with(model: @category, url: category_path, local: true) do |f| %>
             <p>新しいカテゴリー名: <%= f.text_field :category_name, value: "", placeholder:"カテゴリー名" %><p>
-            <%= f.submit "変更を保存する" %>
+            <%= f.submit "変更を保存する", :class=>"btn" %>
           <% end %>
       </div>
     </div>
