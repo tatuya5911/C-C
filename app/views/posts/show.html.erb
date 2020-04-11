@@ -9,11 +9,11 @@
     <div class="row">
       <div class="col-lg-4"></div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-3 center">
         <%= attachment_image_tag @post, :post_image, class: "post_img" %>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 post-data">
         <p><strong>投稿者</strong>:
           <%= link_to user_path(@user.id), class: "link" do %>
             <%= @user.user_name %>
