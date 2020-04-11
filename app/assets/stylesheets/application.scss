@@ -194,6 +194,8 @@ input[type="file"] {
 
 .item-img {
   padding-right: 20px;
+  width: 200px;
+  height: 200px;
 }
 
 .link-to-post-detail:hover {
@@ -224,6 +226,10 @@ h2 {
   font-size: 25px;
 }
 
+h4 {
+  font-size: 15px;
+}
+
 select {
   background-color: #F000;
 }
@@ -245,7 +251,7 @@ select {
 }
 
 .select-box {
-  background-color: inherit;
+  background-color: #D3D3D3;
 }
 
 // post.search
@@ -255,6 +261,16 @@ select {
 
 .button1 {
   width: 50px;
+}
+
+.item-img {
+  padding-right: 5px;
+  width: 200px;
+  height: 200px;
+}
+
+.list {
+  padding-left: 5px;
 }
 
 .like_btn {
