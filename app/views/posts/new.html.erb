@@ -18,6 +18,9 @@
             <ul>
               <li>商品画像</li>
               <li><%= f.attachment_field :post_image %></li>
+              <% if @post.post_image == true %>
+                <%= attachment_image_tag @post, :post_image, class: "post_img" %>
+              <% end %>
               <li>商品名(30文字以内)</li>
               <li><%= f.text_field :post_title, class: "post-title" %></li>
               <li>商品カテゴリー <%= f.collection_select(:category_id, @categorys, :id, :category_name, {prompt: "--選択してください--"} ) %></li>
@@ -30,7 +33,7 @@
               <li>商品説明(おすすめポイントなど)(200字以内)</li>
               <li><%= f.text_area :body, class: "comment" %></li>
               <li>※すべての項目が必須項目です。</li>
-              <%= f.submit "投稿する" %>
+              <%= f.submit "投稿する", :class=>"btn" %>
             </ul>
           <% end %>
       </div>

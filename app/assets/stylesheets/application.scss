@@ -194,6 +194,8 @@ input[type="file"] {
 
 .item-img {
   padding-right: 20px;
+  width: 200px;
+  height: 200px;
 }
 
 .link-to-post-detail:hover {
@@ -220,6 +222,69 @@ input[type="file"] {
 }
 
 @media screen and (max-width:425px) {
-.left {
-  float: none;
-}}
+h2 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 15px;
+}
+
+select {
+  background-color: #F000;
+}
+
+// top.html
+.content {
+  margin-top: 0px;
+  margin-right: 0px;
+}
+
+// user/new
+.register-form {
+  margin-bottom: 5px;
+}
+
+// category
+.category-btn {
+  background-color: #D3D3D3;
+}
+
+.select-box {
+  background-color: #D3D3D3;
+}
+
+// post.search
+.input-mysize {
+  width: 300px;
+}
+
+.button1 {
+  width: 50px;
+}
+
+.item-img {
+  padding-right: 5px;
+  width: 200px;
+  height: 200px;
+}
+
+.list {
+  padding-left: 5px;
+}
+
+.post-data {
+  margin: 10px 0px 0px 10px;
+}
+
+.like_btn {
+  background-color: inherit;
+}
+
+.comments {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+}

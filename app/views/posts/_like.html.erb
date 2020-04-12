@@ -1,6 +1,6 @@
 
   <% if current_user.already_liked?(post) %>
-    <%= button_to 'お気に入り解除', post_likes_path(post), method: :delete, remote: true  %>
+    <%= button_to 'お気に入り解除', post_likes_path(post), method: :delete, remote: true, class:"like_btn"  %>
   <% else %>
-    <%= button_to 'お気に入り', post_likes_path(post), method: :post, remote: true  %>
+    <%= button_to 'お気に入り', post_likes_path(post), method: :post, remote: true, class:"like_btn"  %>
   <% end %>
